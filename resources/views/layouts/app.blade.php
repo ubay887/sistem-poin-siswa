@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/app.js') }}"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -71,6 +71,15 @@
                 </div>
             </div>
         </nav>
+        @auth
+        <nav class="navbar navbar-expand-md navbar-light shadow-sm" style="padding-top: 0px; padding-bottom: 0px">
+            <div class="container">
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    {{ config('app.name', 'Laravel') }}
+                </a>
+            </div>
+        </nav>
+        @endauth
 
         <main class="py-4 container">
             @yield('content')
