@@ -18,6 +18,19 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        .dropdown-item {
+            padding-top: 2px;
+            padding-bottom: 2px;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+        #navbar {
+            background-color: #e4feff!important;
+            padding-top: 0px;
+            padding-bottom: 0px;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
@@ -51,10 +64,20 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    Pengaturan <span class="caret"></span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#">Kelola User</a>
+                                    <a class="dropdown-item" href="#">Backup Database</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#">Ganti Password</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -72,11 +95,102 @@
             </div>
         </nav>
         @auth
-        <nav class="navbar navbar-expand-md navbar-light shadow-sm" style="padding-top: 0px; padding-bottom: 0px">
+        <nav id="navbar" class="navbar navbar-expand-md navbar-light shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="#" id="navbarDropdown" class="nav-link" style="padding-left: 0px">
+                            <b>Dashboard</b>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            Data Sekolah <span class="caret"></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Detail Sekolah</a>
+                            <a class="dropdown-item" href="#">Input Data Kelas</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            Data Guru <span class="caret"></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Input Data Guru</a>
+                            <a class="dropdown-item" href="#">Input Manajemen</a>
+                            <a class="dropdown-item" href="#">Input Bimbingan Konseling</a>
+                            <a class="dropdown-item" href="#">Input Wali Kelas</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            Data Siswa <span class="caret"></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Input Data Siswa</a>
+                            <a class="dropdown-item" href="#">Siswa mutasi</a>
+                            <a class="dropdown-item" href="#">Kenaikan kelas</a>
+                            <a class="dropdown-item" href="#">Data Siswa Tidak Aktif</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            Data Poin <span class="caret"></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Poin Umum</a>
+                            <a class="dropdown-item" href="#">Poin Absensi</a>
+                            <a class="dropdown-item" href="#">Penerapan Poin</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            Pelanggaran <span class="caret"></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Pelanggaran Umum</a>
+                            <a class="dropdown-item" href="#">Absensi Siswa</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            Konseling <span class="caret"></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Konseling 1</a>
+                            <a class="dropdown-item" href="#">Konseling 2</a>
+                            <a class="dropdown-item" href="#">Konseling 3</a>
+                            <a class="dropdown-item" href="#">Konseling 4</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            Peringatan <span class="caret"></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Peringatan 1</a>
+                            <a class="dropdown-item" href="#">Peringatan 2</a>
+                            <a class="dropdown-item" href="#">Peringatan 3</a>
+                            <a class="dropdown-item" href="#">Peringatan 4</a>
+                            <a class="dropdown-item" href="#">Perjanjian</a>
+                            <a class="dropdown-item" href="#">Pemberhentian</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            Laporan <span class="caret"></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Rincian Individu Siswa</a>
+                            <a class="dropdown-item" href="#">Siswa Diberhentikan</a>
+                            <a class="dropdown-item" href="#">Rincian Per Kelas</a>
+                            <a class="dropdown-item" href="#">Rincian Per BK</a>
+                            <a class="dropdown-item" href="#">Rincian Siswa Mutasi</a>
+                            <a class="dropdown-item" href="#">Persentase Pelanggaran</a>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </nav>
         @endauth
