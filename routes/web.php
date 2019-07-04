@@ -29,3 +29,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('schools/{school}/update', 'SchoolController@update')->name('schools.update');
     Route::delete('schools/{school}/destroy', 'SchoolController@destroy')->name('schools.destroy');
 });
+
+/*
+ * ClassNames Routes
+ */
+Route::resource('class_names', 'ClassNameController');
