@@ -39,12 +39,14 @@ class SchoolController extends Controller
             'phone'       => 'nullable|max:12',
             'email'       => 'nullable|max:60',
             'web'         => 'nullable|max:60',
-            'logo'        => 'nullable|max:255',
             'description' => 'nullable|max:255',
         ]);
+
         $newSchool['creator_id'] = auth()->id();
 
         $school = School::create($newSchool);
+
+        flash(__('school.created'), 'success');
 
         return redirect()->route('schools.create');
     }
@@ -69,10 +71,11 @@ class SchoolController extends Controller
             'phone'       => 'nullable|max:12',
             'email'       => 'nullable|max:60',
             'web'         => 'nullable|max:60',
-            'logo'        => 'nullable|max:255',
             'description' => 'nullable|max:255',
         ]);
         $school->update($dataSchool);
+
+        flash(__('school.updated'), 'information');
 
         return redirect()->route('schools.create');
     }
@@ -96,6 +99,9 @@ class SchoolController extends Controller
         ]);
 
         if (request('school_id') == $school->id && $school->delete()) {
+
+            flash(__('school.deleted'), 'warning');
+
             return redirect()->route('schools.create');
         }
 
