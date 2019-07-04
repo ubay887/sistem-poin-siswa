@@ -1,20 +1,35 @@
 <?php
 
-namespace Tests\Unit\Plicies;
+namespace Tests\Unit\Policies;
 
+use App\School;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class SchoolPolicyTest extends TestCase
 {
-    /**
-     * A basic unit test example.
-     *
-     * @return void
-     */
-    public function testExample()
+    use RefreshDatabase;
+
+    /** @test */
+    public function user_can_create_class_name()
     {
-        $this->assertTrue(true);
+        $user = $this->createUser();
+        $this->assertTrue($user->can('create', new School));
+    }
+
+    /** @test */
+    public function user_can_update_class_name()
+    {
+        $user = $this->createUser();
+        $school = factory(School::class)->create();
+        $this->assertTrue($user->can('update', $school));
+    }
+
+    /** @test */
+    public function user_can_delete_class_name()
+    {
+        $user = $this->createUser();
+        $school = factory(School::class)->create();
+        $this->assertTrue($user->can('delete', $school));
     }
 }

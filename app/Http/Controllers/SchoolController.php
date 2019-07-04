@@ -14,7 +14,7 @@ class SchoolController extends Controller
      */
     public function create()
     {
-        // $this->authorize('create', new School);
+        $this->authorize('create', new School);
         $school = School::first();
 
         return view('schools.page', compact('school'));
@@ -28,7 +28,7 @@ class SchoolController extends Controller
      */
     public function store(Request $request)
     {
-        // $this->authorize('create', new School);
+        $this->authorize('create', new School);
 
         $newSchool = $request->validate([
             'name'        => 'required|max:60',
@@ -60,7 +60,7 @@ class SchoolController extends Controller
      */
     public function update(Request $request, School $school)
     {
-        // $this->authorize('create', new School);
+        $this->authorize('update', $school);
 
         $dataSchool = $request->validate([
             'name'        => 'required|max:60',
@@ -88,7 +88,7 @@ class SchoolController extends Controller
      */
     public function destroy(Request $request, School $school)
     {
-        // $this->authorize('delete', $company);
+        $this->authorize('delete', $school);
 
         // if ($company->logo) {
         //     Storage::delete('images/'.$company->logo);
@@ -100,7 +100,7 @@ class SchoolController extends Controller
 
         if (request('school_id') == $school->id && $school->delete()) {
 
-            flash(__('school.deleted'), 'warning');
+            flash(__('school.deleted'), 'error');
 
             return redirect()->route('schools.create');
         }
