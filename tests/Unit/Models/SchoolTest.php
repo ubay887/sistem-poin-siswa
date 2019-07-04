@@ -2,19 +2,21 @@
 
 namespace Tests\Unit\Models;
 
+use App\User;
+use App\School;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class SchoolTest extends TestCase
 {
-    /**
-     * A basic unit test example.
-     *
-     * @return void
-     */
-    public function testExample()
+    use RefreshDatabase;
+
+    /** @test */
+    public function a_class_name_has_belongs_to_creator_relation()
     {
-        $this->assertTrue(true);
+        $school = factory(School::class)->make();
+
+        $this->assertInstanceOf(User::class, $school->creator);
+        $this->assertEquals($school->creator_id, $school->creator->id);
     }
 }
