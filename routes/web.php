@@ -11,10 +11,21 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::view('/', 'auth.login')->middleware('guest');
 
 Auth::routes();
+Route::middleware('auth')->group(function () {
+    Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/home', 'HomeController@index')->name('home');
+    /*
+     * Schools Routes
+     */
+    Route::get('schools/create', 'SchoolController@create')->name('schools.create');
+    Route::post('schools/store', 'SchoolController@store')->name('schools.store');
+    Route::patch('schools/{school}/update', 'SchoolController@update')->name('schools.update');
+    Route::delete('schools/{school}/destroy', 'SchoolController@destroy')->name('schools.destroy');
+});

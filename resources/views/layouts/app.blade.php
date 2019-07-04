@@ -108,7 +108,7 @@
                             Data Sekolah <span class="caret"></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Detail Sekolah</a>
+                            <a class="dropdown-item" href="{{ route('schools.create') }}">Detail Sekolah</a>
                             <a class="dropdown-item" href="#">Input Data Kelas</a>
                         </div>
                     </li>
