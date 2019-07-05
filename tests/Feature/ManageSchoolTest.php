@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\School;
 use Tests\TestCase;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class ManageSchoolTest extends TestCase
@@ -98,5 +99,55 @@ class ManageSchoolTest extends TestCase
         $this->dontSeeInDatabase('schools', [
             'id' => $school->id,
         ]);
+    }
+
+    /** @test */
+    public function user_can_upload_a_company_logo()
+    {
+        $this->loginAsUser();
+
+        $storage = config('filesystems.default');
+        Storage::fake($storage);
+
+        $school = factory(School::class)->create();
+
+        $this->visit(route('schools.create'));
+
+        $this->see(__('school.upload_logo'));
+        $this->attach(storage_path('app/public/images/sampel_logo.png'), 'search_logo');
+        $this->press('upload_logo');
+
+        $this->seeRouteIs('schools.create');
+        $this->seeText(__('school.logo_uploaded'));
+
+        Storage::disk($storage)->assertExists('images/'.$school->fresh()->logo);
+    }
+
+    /** @test */
+    public function user_can_delete_a_company_logo()
+    {
+        $this->loginAsUser();
+
+        $storage = config('filesystems.default');
+        Storage::fake($storage);
+
+        $school = factory(School::class)->create();
+
+        $this->visit(route('schools.create'));
+
+        $this->see(__('school.upload_logo'));
+        $this->attach(storage_path('app/public/images/sampel_logo.png'), 'search_logo');
+        $this->press('upload_logo');
+
+        $this->seeRouteIs('schools.create');
+
+        Storage::disk($storage)->assertExists('images/'.$school->fresh()->logo);
+
+        $this->press('delete_logo');
+        $this->seePageIs(route('schools.create'));
+
+        $this->seeText(__('school.logo_deleted'));
+
+        Storage::disk($storage)->assertMissing($school->fresh()->logo);
     }
 }

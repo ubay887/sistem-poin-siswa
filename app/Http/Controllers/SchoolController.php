@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\School;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class SchoolController extends Controller
 {
@@ -90,9 +91,9 @@ class SchoolController extends Controller
     {
         $this->authorize('delete', $school);
 
-        // if ($company->logo) {
-        //     Storage::delete('images/'.$company->logo);
-        // }
+        if ($school->logo) {
+            Storage::delete('images/'.$school->logo);
+        }
 
         request()->validate([
             'school_id' => 'required',
@@ -106,5 +107,45 @@ class SchoolController extends Controller
         }
 
         return back();
+    }
+
+    /**
+     * Upload school logo.
+     *
+     * @param  \App\School  $school
+     * @return \Illuminate\Routing\Redirector
+     */
+    public function uploadlogo(Request $request, School $school)
+    {
+        $this->authorize('update', $school);
+
+        if ($school->logo) {
+            Storage::delete('images/'.$school->logo);
+        }
+        $logo = $request->file('search_logo')->store('images');
+        $logo = str_replace('images/', '', $logo);
+        $school->update(['logo' => $logo]);
+
+        flash(__('school.logo_uploaded'), 'information');
+
+        return redirect()->back();
+    }
+
+    /**
+     * Delete school logo.
+     *
+     * @param  \App\School  $school
+     * @return \Illuminate\Routing\Redirector
+     */
+    public function destroylogo(Request $request, School $school)
+    {
+        if ($school->logo) {
+            Storage::delete('images/'.$school->logo);
+        }
+        $school->update(['logo' => null]);
+
+        flash(__('school.logo_deleted'), 'error');
+
+        return redirect()->back();
     }
 }

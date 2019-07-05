@@ -99,5 +99,38 @@
             </form>
         </div>
     </div>
+    @if ($school)
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    {{ __('school.create_logo') }}
+                    @if ($school->logo != null)
+                        <form method="POST" action="{{ route('schools.destroylogo', $school) }}" accept-charset="UTF-8" onsubmit="return confirm(&quot;{{ __('app.delete_confirm') }}&quot;)" class="del-form float-right" style="display: inline;">
+                            {{ csrf_field() }} {{ method_field('delete') }}
+                            <input name="school_id" type="hidden" value="{{ $school->id }}">
+                            <input type="submit" value="{{ __('app.delete') }}" class="btn btn-danger btn-sm" id="delete_logo">
+                        </form>
+                    @endif
+                </div>
+                <form method="POST" action="{{ route('schools.uploadlogo', $school) }}" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+                    <div class="card-body" style="padding-top: 2px; padding-bottom: 0px;">
+                        @if ($school->logo == null)
+                            <img src="{{ asset('/storage/images/sampel_logo.png') }}" alt="" width="100%">
+                        @else
+                            <img src="{{ asset('/storage/images/'.$school->logo) }}" alt="" width="100%">
+                        @endif
+                        <div class="form-group">
+                            <input id="search_logo" type="file" class="form-control{{ $errors->has('search_logo') ? ' is-invalid' : '' }}" name="search_logo" style="height: 42px" required>
+                            {!! $errors->first('search_logo', '<span class="invalid-feedback" role="alert">:message</span>') !!}
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <input type="submit" value="{{ __('school.upload_logo') }}" class="btn btn-primary" id="upload_logo">
+                    </div>
+                </form>
+            </div>
+        </div>
+    @endif
 </div>
 @endsection

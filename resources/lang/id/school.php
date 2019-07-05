@@ -3,6 +3,9 @@
 return [
     // Labels
     'create_school' => 'Input Data Sekolah',
+    'create_logo'   => 'Upload Logo Sekolah',
+    'logo_uploaded' => 'Upload Logo Sekolah telah berhasil.',
+    'logo_deleted'  => 'Hapus Logo Sekolah telah berhasil.',
 
     // Actions
     'create'         => 'Input Data',
@@ -14,6 +17,7 @@ return [
     'deleted'        => 'Hapus data Sekolah telah berhasil.',
     'undeleted'      => 'Data Sekolah gagal dihapus.',
     'undeleteable'   => 'Data Sekolah tidak dapat dihapus.',
+    'upload_logo'    => 'Upload Logo',
 
     // Attributes
     'name'        => 'Nama Sekolah',
