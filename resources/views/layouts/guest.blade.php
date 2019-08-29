@@ -18,25 +18,23 @@
 
     <title>@yield('title') - {{ config('app.name', 'Laravel') }}</title>
 
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="icon" href="{{ url('favicon.ico') }}" type="image/x-icon"/>
-    <link rel="shortcut icon" type="image/x-icon" href="{{ url('favicon.ico') }}" />
-    @yield('styles')
+    <link rel="icon" href="./favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico" />
 </head>
 <body>
-    <div id="app" class="page">
-        <div class="flex-fill">
-            @include('layouts.partials.navigation')
-            <div class="my-3 my-md-5">
-                <div class="container">@yield('content')</div>
+    <div class="page">
+        <div class="page-single">
+            <div class="container">
+                @yield('content')
             </div>
         </div>
     </div>
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}" ></script>
     @include('layouts.partials.noty')
-    @stack('scripts')
 </body>
 </html>

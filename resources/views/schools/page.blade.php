@@ -9,11 +9,13 @@
             <div class="card-header">
                 {{ __('school.create_school') }}
                 @if ($school)
+                <div class="card-options">
                     <form method="POST" action="{{ route('schools.destroy', $school) }}" accept-charset="UTF-8" onsubmit="return confirm(&quot;{{ __('app.delete_confirm') }}&quot;)" class="del-form float-right" style="display: inline;">
                         {{ csrf_field() }} {{ method_field('delete') }}
                         <input name="school_id" type="hidden" value="{{ $school->id }}">
                         <button type="submit" class="btn btn-danger btn-sm">{{ __('app.delete') }}</button>
                     </form>
+                </div>
                 @endif
             </div>
                 @if ($school)
@@ -105,11 +107,13 @@
                 <div class="card-header">
                     {{ __('school.create_logo') }}
                     @if ($school->logo != null)
+                    <div class="card-options">
                         <form method="POST" action="{{ route('schools.destroylogo', $school) }}" accept-charset="UTF-8" onsubmit="return confirm(&quot;{{ __('app.delete_confirm') }}&quot;)" class="del-form float-right" style="display: inline;">
                             {{ csrf_field() }} {{ method_field('delete') }}
                             <input name="school_id" type="hidden" value="{{ $school->id }}">
                             <input type="submit" value="{{ __('app.delete') }}" class="btn btn-danger btn-sm" id="delete_logo">
                         </form>
+                    </div>
                     @endif
                 </div>
                 <form method="POST" action="{{ route('schools.uploadlogo', $school) }}" enctype="multipart/form-data">

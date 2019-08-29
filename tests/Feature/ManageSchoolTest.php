@@ -114,7 +114,7 @@ class ManageSchoolTest extends TestCase
         $this->visit(route('schools.create'));
 
         $this->see(__('school.upload_logo'));
-        $this->attach(public_path('sampel_logo.png'), 'search_logo');
+        $this->attach(public_path('images/sample_logo.png'), 'search_logo');
         $this->press('upload_logo');
 
         $this->seeRouteIs('schools.create');
@@ -136,7 +136,7 @@ class ManageSchoolTest extends TestCase
         $this->visit(route('schools.create'));
 
         $this->see(__('school.upload_logo'));
-        $this->attach(public_path('sampel_logo.png'), 'search_logo');
+        $this->attach(public_path('images/sample_logo.png'), 'search_logo');
         $this->press('upload_logo');
 
         $this->seeRouteIs('schools.create');

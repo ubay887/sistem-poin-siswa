@@ -2,6 +2,7 @@
 
 return [
     // Labels
+    'school'        => 'Data Sekolah',
     'create_school' => 'Input Data Sekolah',
     'create_logo'   => 'Upload Logo Sekolah',
     'logo_uploaded' => 'Upload Logo Sekolah telah berhasil.',
