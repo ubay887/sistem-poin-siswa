@@ -120,7 +120,7 @@
                     {{ csrf_field() }}
                     <div class="card-body" style="padding-top: 2px; padding-bottom: 0px;">
                         @if ($school->logo == null)
-                            <img src="{{ asset('/storage/images/sampel_logo.png') }}" alt="" width="100%">
+                            <img src="{{ asset('images/sample_logo.png') }}" alt="" width="100%">
                         @else
                             <img src="{{ asset('/storage/images/'.$school->logo) }}" alt="" width="100%">
                         @endif
@@ -129,6 +129,7 @@
                             {!! $errors->first('search_logo', '<span class="invalid-feedback" role="alert">:message</span>') !!}
                         </div>
                     </div>
+                    <br>
                     <div class="card-footer">
                         <input type="submit" value="{{ __('school.upload_logo') }}" class="btn btn-primary" id="upload_logo">
                     </div>
