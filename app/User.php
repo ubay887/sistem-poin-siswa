@@ -3,7 +3,6 @@
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -36,4 +35,17 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getNameLinkAttribute()
+    {
+        $title = __('app.show_detail_title', [
+            'name' => $this->name, 'type' => __('user.user'),
+        ]);
+        $link = '<a href="'.route('users.show', $this).'"';
+        $link .= ' title="'.$title.'">';
+        $link .= $this->name;
+        $link .= '</a>';
+
+        return $link;
+    }
 }

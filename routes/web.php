@@ -33,3 +33,8 @@ Route::middleware('auth')->group(function () {
  * ClassNames Routes
  */
 Route::resource('class_names', 'ClassNameController');
+
+/*
+ * Users Routes
+ */
+Route::resource('users', 'UserController');
