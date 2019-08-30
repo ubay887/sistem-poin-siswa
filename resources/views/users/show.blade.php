@@ -11,7 +11,7 @@
                 <table class="table table-sm">
                     <tbody>
                         <tr><td>{{ __('user.name') }}</td><td>{{ $user->name }}</td></tr>
-                        <tr><td>{{ __('user.description') }}</td><td>{{ $user->description }}</td></tr>
+                        <tr><td>{{ __('user.email') }}</td><td>{{ $user->email }}</td></tr>
                     </tbody>
                 </table>
             </div>

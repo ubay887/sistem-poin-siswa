@@ -12,8 +12,8 @@
                 <div class="card-body">
                     <label class="form-label text-primary">{{ __('user.name') }}</label>
                     <p>{{ $user->name }}</p>
-                    <label class="form-label text-primary">{{ __('user.description') }}</label>
-                    <p>{{ $user->description }}</p>
+                    <label class="form-label text-primary">{{ __('user.email') }}</label>
+                    <p>{{ $user->email }}</p>
                     {!! $errors->first('user_id', '<span class="invalid-feedback" role="alert">:message</span>') !!}
                 </div>
                 <hr style="margin:0">

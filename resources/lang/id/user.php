@@ -2,17 +2,17 @@
 
 return [
     // Labels
-    'user'     => 'User',
-    'list'           => 'Daftar User',
-    'search'         => 'Cari User',
-    'search_text'    => 'Nama ...',
-    'all'            => 'Semua User',
-    'select'         => 'Pilih User',
-    'detail'         => 'Detail User',
-    'not_found'      => 'User tidak ditemukan',
-    'empty'          => 'Belum ada User',
-    'back_to_show'   => 'Kembali ke detail User',
-    'back_to_index'  => 'Kembali ke daftar User',
+    'user'          => 'User',
+    'list'          => 'Daftar User',
+    'search'        => 'Cari User',
+    'search_text'   => 'Nama ...',
+    'all'           => 'Semua User',
+    'select'        => 'Pilih User',
+    'detail'        => 'Detail User',
+    'not_found'     => 'User tidak ditemukan',
+    'empty'         => 'Belum ada User',
+    'back_to_show'  => 'Kembali ke detail User',
+    'back_to_index' => 'Kembali ke daftar User',
 
     // Actions
     'create'         => 'Input User Baru',
@@ -28,6 +28,7 @@ return [
     'undeleteable'   => 'Data User tidak dapat dihapus.',
 
     // Attributes
-    'name'           => 'Nama User',
-    'description'    => 'Deskripsi User',
+    'name'     => 'Nama',
+    'email'    => 'Email',
+    'password' => 'Password',
 ];
