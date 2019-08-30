@@ -44,9 +44,9 @@ class UserController extends Controller
         $this->authorize('create', new User);
 
         $newUserData = $request->validate([
-            'name'     => 'required|max:60',
-            'email'    => 'required|max:60',
-            'password' => 'nullable|max:255',
+            'name'     => 'required|min:5|max:60',
+            'email'    => 'required|email|unique:users,email',
+            'password' => 'nullable|between:8,15',
         ]);
 
         $newUserData['name'] = ucwords(strtolower($newUserData['name']));
@@ -96,9 +96,9 @@ class UserController extends Controller
         $this->authorize('update', $user);
 
         $UserData = $request->validate([
-            'name'     => 'required|max:60',
-            'email'    => 'required|max:255',
-            'password' => 'nullable|max:255',
+            'name'     => 'required|min:5|max:60',
+            'email'    => 'required|email|unique:users,email',
+            'password' => 'nullable|between:8,15',
         ]);
         $UserData['name'] = ucwords(strtolower($UserData['name']));
         if ($UserData['password'] == null) {
@@ -107,6 +107,8 @@ class UserController extends Controller
             $UserData['password'] = bcrypt($UserData['password']);
         }
         $user->update($UserData);
+
+        flash(__('user.updated'), 'information');
 
         return redirect()->route('users.show', $user);
     }
@@ -124,10 +126,19 @@ class UserController extends Controller
 
         $request->validate(['user_id' => 'required']);
 
-        if ($request->get('user_id') == $user->id && $user->delete()) {
-            return redirect()->route('users.index');
+        if (auth()->user()->id != $user->id) {
+            if ($request->get('user_id') == $user->id && $user->delete()) {
+
+                flash(__('user.deleted'), 'error');
+
+                return redirect()->route('users.index');
+            }
+        } else {
+
+            flash(__('user.undeleted'), 'warning');
+
+            return back();
         }
 
-        return back();
     }
 }
