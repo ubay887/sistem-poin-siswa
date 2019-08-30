@@ -12,8 +12,12 @@
                 <div class="card-body">
                     <label class="form-label text-primary">{{ __('user.name') }}</label>
                     <p>{{ $user->name }}</p>
+                    <label class="form-label text-primary">{{ __('user.username') }}</label>
+                    <p>{{ $user->username }}</p>
                     <label class="form-label text-primary">{{ __('user.email') }}</label>
                     <p>{{ $user->email }}</p>
+                    <label class="form-label text-primary">{{ __('user.role_id') }}</label>
+                    <p>{{ $user->role_id }}</p>
                     {!! $errors->first('user_id', '<span class="invalid-feedback" role="alert">:message</span>') !!}
                 </div>
                 <hr style="margin:0">
@@ -40,9 +44,19 @@
                         {!! $errors->first('name', '<span class="invalid-feedback" role="alert">:message</span>') !!}
                     </div>
                     <div class="form-group">
+                        <label for="username" class="control-label">{{ __('user.username') }}</label>
+                        <input id="username" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username', $user->username) }}" required>
+                        {!! $errors->first('username', '<span class="invalid-feedback" role="alert">:message</span>') !!}
+                    </div>
+                    <div class="form-group">
                         <label for="email" class="control-label">{{ __('user.email') }}</label>
                         <input id="email" type="text" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email', $user->email) }}" required>
                         {!! $errors->first('email', '<span class="invalid-feedback" role="alert">:message</span>') !!}
+                    </div>
+                    <div class="form-group">
+                        <label for="role_id" class="control-label">{{ __('user.role_id') }}</label>
+                        <input id="role_id" type="text" class="form-control{{ $errors->has('role_id') ? ' is-invalid' : '' }}" name="role_id" value="{{ old('role_id', $user->role_id) }}" required>
+                        {!! $errors->first('role_id', '<span class="invalid-feedback" role="alert">:message</span>') !!}
                     </div>
                     <div class="form-group">
                         <label for="password" class="control-label">{{ __('user.password') }}</label>

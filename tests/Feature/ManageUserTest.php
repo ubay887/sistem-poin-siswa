@@ -23,8 +23,10 @@ class ManageUserTest extends TestCase
     private function getCreateFields(array $overrides = [])
     {
         return array_merge([
-            'name'  => 'User 1 name',
-            'email' => 'example@mail.com',
+            'name'     => 'User 1 name',
+            'username' => 'username_example',
+            'email'    => 'example@mail.com',
+            'role_id'  => 1, // 1:Admin, 2:Guru, 3:Siswa
         ], $overrides);
     }
 
@@ -69,8 +71,10 @@ class ManageUserTest extends TestCase
     private function getEditFields(array $overrides = [])
     {
         return array_merge([
-            'name'  => 'User 1 name',
-            'email' => 'example@mail.com',
+            'name'     => 'User 1 name',
+            'username' => 'username_example',
+            'email'    => 'example@mail.com',
+            'role_id'  => 1, // 1:Admin, 2:Guru, 3:Siswa
         ], $overrides);
     }
 

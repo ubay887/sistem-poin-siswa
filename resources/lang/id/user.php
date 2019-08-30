@@ -29,6 +29,8 @@ return [
 
     // Attributes
     'name'     => 'Nama',
+    'username' => 'Username',
     'email'    => 'Email',
+    'role_id'  => 'Role',
     'password' => 'Password',
 ];

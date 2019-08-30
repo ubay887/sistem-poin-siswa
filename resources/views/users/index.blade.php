@@ -30,7 +30,9 @@
                     <tr>
                         <th class="text-center">{{ __('app.table_no') }}</th>
                         <th>{{ __('user.name') }}</th>
+                        <th>{{ __('user.username') }}</th>
                         <th>{{ __('user.email') }}</th>
+                        <th>{{ __('user.role_id') }}</th>
                         <th class="text-center">{{ __('app.action') }}</th>
                     </tr>
                 </thead>
@@ -39,7 +41,9 @@
                     <tr>
                         <td class="text-center">{{ $users->firstItem() + $key }}</td>
                         <td>{!! $user->name_link !!}</td>
+                        <td>{{ $user->username }}</td>
                         <td>{{ $user->email }}</td>
+                        <td>{{ $user->role_id }}</td>
                         <td class="text-center">
                             @can('view', $user)
                                 <a href="{{ route('users.show', $user) }}" id="show-user-{{ $user->id }}">{{ __('app.show') }}</a>

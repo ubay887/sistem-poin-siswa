@@ -45,7 +45,9 @@ class UserController extends Controller
 
         $newUserData = $request->validate([
             'name'     => 'required|min:5|max:60',
+            'username' => 'required|min:5|max:60|unique:users,username',
             'email'    => 'required|email|unique:users,email',
+            'role_id'  => 'required|in:1,2,3',
             'password' => 'nullable|between:8,15',
         ]);
 
@@ -97,7 +99,9 @@ class UserController extends Controller
 
         $UserData = $request->validate([
             'name'     => 'required|min:5|max:60',
-            'email'    => 'required|email|unique:users,email',
+            'username' => 'required|min:5|max:60|unique:users,username,'.$user->id,
+            'email'    => 'required|email|unique:users,email,'.$user->id,
+            'role_id'  => 'required|in:1,2,3',
             'password' => 'nullable|between:8,15',
         ]);
         $UserData['name'] = ucwords(strtolower($UserData['name']));

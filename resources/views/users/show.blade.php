@@ -11,7 +11,9 @@
                 <table class="table table-sm">
                     <tbody>
                         <tr><td>{{ __('user.name') }}</td><td>{{ $user->name }}</td></tr>
+                        <tr><td>{{ __('user.username') }}</td><td>{{ $user->username }}</td></tr>
                         <tr><td>{{ __('user.email') }}</td><td>{{ $user->email }}</td></tr>
+                        <tr><td>{{ __('user.role_id') }}</td><td>{{ $user->role_id }}</td></tr>
                     </tbody>
                 </table>
             </div>
