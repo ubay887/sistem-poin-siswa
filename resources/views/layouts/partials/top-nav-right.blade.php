@@ -15,7 +15,7 @@
             <i class="dropdown-icon fe fe-lock"></i> {{ __('passwords.change_password') }}
         </a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">
+        <a class="dropdown-item" href="{{ route('users.index') }}">
             <i class="dropdown-icon fe fe-users"></i> {{ __('user.list') }}
         </a>
         <a class="dropdown-item" href="#">
