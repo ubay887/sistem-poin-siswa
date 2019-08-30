@@ -15,20 +15,23 @@ class CreateSchoolsTable extends Migration
     {
         Schema::create('schools', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name', 60);
-            $table->string('address');
-            $table->string('district', 60);
-            $table->string('province', 60);
-            $table->string('pos', 5)->nullable();
-            $table->string('phone', 12)->nullable();
-            $table->string('email', 60)->nullable();
-            $table->string('web', 60)->nullable();
-            $table->string('logo')->nullable();
-            $table->string('description')->nullable();
-            $table->unsignedBigInteger('creator_id');
-            $table->timestamps();
+            $table->string('key', 60)->index();
+            $table->string('value')->nullable();
 
-            $table->foreign('creator_id')->references('id')->on('users')->onDelete('restrict');
+            // $table->string('name', 60);
+            // $table->string('address');
+            // $table->string('district', 60);
+            // $table->string('province', 60);
+            // $table->string('pos', 5)->nullable();
+            // $table->string('phone', 12)->nullable();
+            // $table->string('email', 60)->nullable();
+            // $table->string('web', 60)->nullable();
+            // $table->string('logo')->nullable();
+            // $table->string('description')->nullable();
+            // $table->unsignedBigInteger('creator_id');
+            // $table->timestamps();
+
+            // $table->foreign('creator_id')->references('id')->on('users')->onDelete('restrict');
         });
     }
 

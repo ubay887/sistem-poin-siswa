@@ -4,148 +4,203 @@ namespace App\Http\Controllers;
 
 use App\School;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class SchoolController extends Controller
 {
-    /**
-     * Show the form for creating a new school.
-     *
-     * @return \Illuminate\View\View
-     */
-    public function create()
+    public function page()
     {
-        $this->authorize('create', new School);
-        $school = School::first();
-
-        return view('schools.page', compact('school'));
+        return view('schools.page');
     }
 
-    /**
-     * Store a newly created company in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Routing\Redirector
-     */
-    public function store(Request $request)
+    public function save(Request $request)
     {
-        $this->authorize('create', new School);
+        $request->validate([
 
-        $newSchool = $request->validate([
-            'name'        => 'required|max:60',
-            'address'     => 'required|max:255',
-            'district'    => 'required|max:60',
-            'province'    => 'required|max:60',
-            'pos'         => 'nullable|max:5',
-            'phone'       => 'nullable|max:12',
-            'email'       => 'nullable|max:60',
-            'web'         => 'nullable|max:60',
-            'description' => 'nullable|max:255',
+            'school_name'     => 'required|max:60',
+            'school_address'  => 'required|max:255',
+            'school_district' => 'required|max:60',
+            'school_province' => 'required|max:60',
+            'school_pos'      => 'nullable|max:5',
+            'school_phone'    => 'nullable|max:12',
+            'school_email'    => 'nullable|max:60',
+            'school_web'      => 'nullable|max:60',
         ]);
 
-        $newSchool['creator_id'] = auth()->id();
+        $school = School::firstOrNew(['key' => 'school_name']);
+        $school->value = $request->get('school_name');
+        $school->save();
 
-        $school = School::create($newSchool);
+        $school = School::firstOrNew(['key' => 'school_address']);
+        $school->value = $request->get('school_address');
+        $school->save();
 
-        flash(__('school.created'), 'success');
+        $school = School::firstOrNew(['key' => 'school_district']);
+        $school->value = $request->get('school_district');
+        $school->save();
 
-        return redirect()->route('schools.create');
+        $school = School::firstOrNew(['key' => 'school_province']);
+        $school->value = $request->get('school_province');
+        $school->save();
+
+        $school = School::firstOrNew(['key' => 'school_pos']);
+        $school->value = $request->get('school_pos');
+        $school->save();
+
+        $school = School::firstOrNew(['key' => 'school_phone']);
+        $school->value = $request->get('school_phone');
+        $school->save();
+
+        $school = School::firstOrNew(['key' => 'school_email']);
+        $school->value = $request->get('school_email');
+        $school->save();
+
+        $school = School::firstOrNew(['key' => 'school_web']);
+        $school->value = $request->get('school_web');
+        $school->save();
+
+        flash(__('school.updated'), 'success');
+
+        return redirect()->route('schools.page');
     }
 
-    /**
-     * Update a newly created school in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\School  $school
-     * @return \Illuminate\Routing\Redirector
-     */
-    public function update(Request $request, School $school)
-    {
-        $this->authorize('update', $school);
+    // /**
+    //  * Show the form for creating a new school.
+    //  *
+    //  * @return \Illuminate\View\View
+    //  */
+    // public function create()
+    // {
+    //     $this->authorize('create', new School);
+    //     $school = School::first();
 
-        $dataSchool = $request->validate([
-            'name'        => 'required|max:60',
-            'address'     => 'required|max:255',
-            'district'    => 'required|max:60',
-            'province'    => 'required|max:60',
-            'pos'         => 'nullable|max:5',
-            'phone'       => 'nullable|max:12',
-            'email'       => 'nullable|max:60',
-            'web'         => 'nullable|max:60',
-            'description' => 'nullable|max:255',
-        ]);
-        $school->update($dataSchool);
+    //     return view('schools.page', compact('school'));
+    // }
 
-        flash(__('school.updated'), 'information');
+    // /**
+    //  * Store a newly created company in storage.
+    //  *
+    //  * @param  \Illuminate\Http\Request  $request
+    //  * @return \Illuminate\Routing\Redirector
+    //  */
+    // public function store(Request $request)
+    // {
+    //     $this->authorize('create', new School);
 
-        return redirect()->route('schools.create');
-    }
+    //     $newSchool = $request->validate([
+    //         'name'        => 'required|max:60',
+    //         'address'     => 'required|max:255',
+    //         'district'    => 'required|max:60',
+    //         'province'    => 'required|max:60',
+    //         'pos'         => 'nullable|max:5',
+    //         'phone'       => 'nullable|max:12',
+    //         'email'       => 'nullable|max:60',
+    //         'web'         => 'nullable|max:60',
+    //         'description' => 'nullable|max:255',
+    //     ]);
 
-    /**
-     * Remove the specified school from storage.
-     *
-     * @param  \App\School  $school
-     * @return \Illuminate\Routing\Redirector
-     */
-    public function destroy(Request $request, School $school)
-    {
-        $this->authorize('delete', $school);
+    //     $newSchool['creator_id'] = auth()->id();
 
-        if ($school->logo) {
-            Storage::delete('images/'.$school->logo);
-        }
+    //     $school = School::create($newSchool);
 
-        request()->validate([
-            'school_id' => 'required',
-        ]);
+    //     flash(__('school.created'), 'success');
 
-        if (request('school_id') == $school->id && $school->delete()) {
+    //     return redirect()->route('schools.create');
+    // }
 
-            flash(__('school.deleted'), 'error');
+    // /**
+    //  * Update a newly created school in storage.
+    //  *
+    //  * @param  \Illuminate\Http\Request  $request
+    //  * @param  \App\School  $school
+    //  * @return \Illuminate\Routing\Redirector
+    //  */
+    // public function update(Request $request, School $school)
+    // {
+    //     $this->authorize('update', $school);
 
-            return redirect()->route('schools.create');
-        }
+    //     $dataSchool = $request->validate([
+    //         'name'        => 'required|max:60',
+    //         'address'     => 'required|max:255',
+    //         'district'    => 'required|max:60',
+    //         'province'    => 'required|max:60',
+    //         'pos'         => 'nullable|max:5',
+    //         'phone'       => 'nullable|max:12',
+    //         'email'       => 'nullable|max:60',
+    //         'web'         => 'nullable|max:60',
+    //         'description' => 'nullable|max:255',
+    //     ]);
+    //     $school->update($dataSchool);
 
-        return back();
-    }
+    //     flash(__('school.updated'), 'information');
 
-    /**
-     * Upload school logo.
-     *
-     * @param  \App\School  $school
-     * @return \Illuminate\Routing\Redirector
-     */
-    public function uploadlogo(Request $request, School $school)
-    {
-        $this->authorize('update', $school);
+    //     return redirect()->route('schools.create');
+    // }
 
-        if ($school->logo) {
-            Storage::delete('images/'.$school->logo);
-        }
-        $logo = $request->file('search_logo')->store('images');
-        $logo = str_replace('images/', '', $logo);
-        $school->update(['logo' => $logo]);
+    // /**
+    //  * Remove the specified school from storage.
+    //  *
+    //  * @param  \App\School  $school
+    //  * @return \Illuminate\Routing\Redirector
+    //  */
+    // public function destroy(Request $request, School $school)
+    // {
+    //     $this->authorize('delete', $school);
 
-        flash(__('school.logo_uploaded'), 'information');
+    //     if ($school->logo) {
+    //         Storage::delete('images/'.$school->logo);
+    //     }
 
-        return redirect()->back();
-    }
+    //     request()->validate([
+    //         'school_id' => 'required',
+    //     ]);
 
-    /**
-     * Delete school logo.
-     *
-     * @param  \App\School  $school
-     * @return \Illuminate\Routing\Redirector
-     */
-    public function destroylogo(Request $request, School $school)
-    {
-        if ($school->logo) {
-            Storage::delete('images/'.$school->logo);
-        }
-        $school->update(['logo' => null]);
+    //     if (request('school_id') == $school->id && $school->delete()) {
 
-        flash(__('school.logo_deleted'), 'error');
+    //         flash(__('school.deleted'), 'error');
 
-        return redirect()->back();
-    }
+    //         return redirect()->route('schools.create');
+    //     }
+
+    //     return back();
+    // }
+
+    // /**
+    //  * Upload school logo.
+    //  *
+    //  * @param  \App\School  $school
+    //  * @return \Illuminate\Routing\Redirector
+    //  */
+    // public function uploadlogo(Request $request, School $school)
+    // {
+    //     $this->authorize('update', $school);
+
+    //     if ($school->logo) {
+    //         Storage::delete('images/'.$school->logo);
+    //     }
+    //     $logo = $request->file('search_logo')->store('images');
+    //     $logo = str_replace('images/', '', $logo);
+    //     $school->update(['logo' => $logo]);
+
+    //     flash(__('school.logo_uploaded'), 'information');
+
+    //     return redirect()->back();
+    // }
+
+    // /**
+    //  * Delete school logo.
+    //  *
+    //  * @param  \App\School  $school
+    //  * @return \Illuminate\Routing\Redirector
+    //  */
+    // public function destroylogo(Request $request, School $school)
+    // {
+    //     if ($school->logo) {
+    //         Storage::delete('images/'.$school->logo);
+    //     }
+    //     $school->update(['logo' => null]);
+
+    //     flash(__('school.logo_deleted'), 'error');
+
+    //     return redirect()->back();
+    // }
 }

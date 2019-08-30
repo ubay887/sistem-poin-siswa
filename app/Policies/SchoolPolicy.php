@@ -17,11 +17,11 @@ class SchoolPolicy
      * @param  \App\School  $school
      * @return mixed
      */
-    public function create(User $user, School $school)
-    {
-        // Update $user authorization to create $school here.
-        return true;
-    }
+    // public function create(User $user, School $school)
+    // {
+    //     // Update $user authorization to create $school here.
+    //     return true;
+    // }
 
     /**
      * Determine whether the user can update the school.
@@ -43,9 +43,9 @@ class SchoolPolicy
      * @param  \App\School  $school
      * @return mixed
      */
-    public function delete(User $user, School $school)
-    {
-        // Update $user authorization to delete $school here.
-        return true;
-    }
+    // public function delete(User $user, School $school)
+    // {
+    //     // Update $user authorization to delete $school here.
+    //     return true;
+    // }
 }
