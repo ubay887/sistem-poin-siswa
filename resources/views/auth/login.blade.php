@@ -6,7 +6,14 @@
 <div class="container">
     <div class="row">
         <div class="col col-login mx-auto">
-            <div class="text-center mb-2"><img src="{{ asset('images/sample_logo.png') }}" alt="Wira Toyota Logo" width="170px"></div>
+
+            <div class="text-center mb-2">
+                @if (School::get('school_logo'))
+                    <img src="{{ asset('images/'.School::get('school_logo')) }}" alt="Logo" width="170px">
+                @else
+                    <img src="{{ asset('images/sample_logo.png') }}" alt="Logo" width="170px">
+                @endif
+            </div>
 
             <div class="card">
                 <div class="card-body p-6">
