@@ -2,7 +2,7 @@
     <div class="container">
         <div class="d-flex">
             <a class="header-brand" href="{{ url('/') }}">
-                <span class="badge badge-danger badge-pill" style="font-size: 20px">SIMPOSIS</span> | {{ strtoupper(School::get('school_name')) }}
+                <span class="badge badge-danger badge-pill" style="font-size: 20px">SIMPOSIS</span> | {{ strtoupper(School::get('school_name', 'Nama Sekolah')) }}
             </a>
             <div class="d-flex order-lg-2 ml-auto">
                 @include('layouts.partials.top-nav-right')
