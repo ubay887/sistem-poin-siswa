@@ -44,12 +44,12 @@
                         {!! $errors->first('name', '<span class="invalid-feedback" role="alert">:message</span>') !!}
                     </div>
                     <div class="form-group">
-                        <label for="username" class="control-label">{{ __('user.username') }}</label>
+                        <label for="username" class="control-label">{{ __('user.username') }} <span class="form-required">*</span></label>
                         <input id="username" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username', $user->username) }}" required>
                         {!! $errors->first('username', '<span class="invalid-feedback" role="alert">:message</span>') !!}
                     </div>
                     <div class="form-group">
-                        <label for="email" class="control-label">{{ __('user.email') }}</label>
+                        <label for="email" class="control-label">{{ __('user.email') }} <span class="form-required">*</span></label>
                         <input id="email" type="text" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email', $user->email) }}" required>
                         {!! $errors->first('email', '<span class="invalid-feedback" role="alert">:message</span>') !!}
                     </div>
