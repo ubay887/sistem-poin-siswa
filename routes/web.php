@@ -26,11 +26,7 @@ Route::middleware('auth')->group(function () {
      */
     Route::get('schools/page', 'SchoolController@page')->name('schools.page');
     Route::post('schools/save', 'SchoolController@save')->name('schools.save');
-    // Route::patch('schools/{school}/update', 'SchoolController@update')->name('schools.update');
-    // Route::delete('schools/{school}/destroy', 'SchoolController@destroy')->name('schools.destroy');
-
-    // Route::post('schools/{school}/uploadlogo', 'SchoolController@uploadlogo')->name('schools.uploadlogo');
-    // Route::delete('schools/{school}/deletelogo', 'SchoolController@destroylogo')->name('schools.destroylogo');
+    Route::post('schools/uploadlogo', 'SchoolController@uploadlogo')->name('schools.uploadlogo');
 });
 
 /*
