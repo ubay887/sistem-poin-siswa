@@ -27,6 +27,11 @@ return [
     'undeleted'      => 'Data User gagal dihapus.',
     'undeleteable'   => 'Data User tidak dapat dihapus.',
 
+    // Role
+    'admin'   => 'Administrator',
+    'teacher' => 'Guru',
+    'student' => 'Siswa',
+
     // Attributes
     'name'     => 'Nama',
     'username' => 'Username',

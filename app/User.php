@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Role;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -47,5 +48,12 @@ class User extends Authenticatable
         $link .= '</a>';
 
         return $link;
+    }
+
+    public function getRoleAttribute()
+    {
+        $roleTypes = Role::$lists;
+
+        return __('user.'.$roleTypes[$this->role_id]);
     }
 }

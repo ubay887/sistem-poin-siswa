@@ -26,9 +26,14 @@
                         {!! $errors->first('email', '<span class="invalid-feedback" role="alert">:message</span>') !!}
                     </div>
                     <div class="form-group">
-                        <label for="role_id" class="control-label">{{ __('user.role_id') }} <span class="form-required">*</span></label>
-                        <input id="role_id" type="text" class="form-control{{ $errors->has('role_id') ? ' is-invalid' : '' }}" name="role_id" value="{{ old('role_id') }}" required>
-                        {!! $errors->first('role_id', '<span class="invalid-feedback" role="alert">:message</span>') !!}
+                        <label for="role_id" class="form-label">{{ __('user.role_id') }} <span class="form-required">*</span></label>
+                        <div class="form-group">
+                            @foreach (App\Role::$lists as $roleId => $roleType)
+                                <input type="radio" value="{{ $roleId }}" {{ 1 === $roleId ? 'checked' : '' }} id="role_id" name="role_id" >
+                                <label for="role_id">{{ __('user.'.$roleType) }}</label>&nbsp;&nbsp;&nbsp;
+                            @endforeach
+                        </div>
+                        {!! $errors->first('jenis_kelamin', '<span class="invalid-feedback" role="alert">:message</span>') !!}
                     </div>
                     <div class="form-group">
                         <label for="password" class="control-label">{{ __('user.password') }} <span class="form-required">*</span></label>

@@ -4,7 +4,7 @@
         <span class="avatar avatar-placeholder"><img src="{{ asset('images/user.jpg') }}" class="header-brand-img" alt="User Logo"></span>
         <span class="ml-2 d-none d-lg-block">
             <span class="text-default">{{ auth()->user()->name }}</span>
-            <small class="text-muted d-block mt-1">Nama Role</small>
+            <small class="text-muted d-block mt-1">{{ auth()->user()->role }}</small>
         </span>
     </a>
     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">

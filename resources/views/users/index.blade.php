@@ -43,7 +43,7 @@
                         <td>{!! $user->name_link !!}</td>
                         <td>{{ $user->username }}</td>
                         <td>{{ $user->email }}</td>
-                        <td>{{ $user->role_id }}</td>
+                        <td>{{ $user->role }}</td>
                         <td class="text-center">
                             @can('view', $user)
                                 <a href="{{ route('users.show', $user) }}" id="show-user-{{ $user->id }}">{{ __('app.show') }}</a>
