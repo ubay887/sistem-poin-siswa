@@ -122,7 +122,7 @@
                         @if ($school->logo == null)
                             <img src="{{ asset('images/sample_logo.png') }}" alt="" width="100%">
                         @else
-                            <img src="{{ asset('/storage/images/'.$school->logo) }}" alt="" width="100%">
+                            <img src="{{ asset('images/'.$school->logo) }}" alt="" style="padding: 20px" width="100%">
                         @endif
                         <div class="form-group">
                             <input id="search_logo" type="file" class="form-control{{ $errors->has('search_logo') ? ' is-invalid' : '' }}" name="search_logo" style="height: 42px" required>
