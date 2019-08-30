@@ -23,8 +23,8 @@ class ManageUserTest extends TestCase
     private function getCreateFields(array $overrides = [])
     {
         return array_merge([
-            'name'        => 'User 1 name',
-            'description' => 'User 1 description',
+            'name'  => 'User 1 name',
+            'email' => 'example@mail.com',
         ], $overrides);
     }
 
@@ -39,9 +39,9 @@ class ManageUserTest extends TestCase
 
         $this->submitForm(__('user.create'), $this->getCreateFields());
 
-        $this->seeRouteIs('users.show', User::first());
-
-        $this->seeInDatabase('users', $this->getCreateFields());
+        $this->seeInDatabase('users', $this->getCreateFields([
+            'name' => 'User 1 Name',
+        ]));
     }
 
     /** @test */
@@ -66,23 +66,11 @@ class ManageUserTest extends TestCase
         $this->assertSessionHasErrors('name');
     }
 
-    /** @test */
-    public function validate_user_description_is_not_more_than_255_characters()
-    {
-        $this->loginAsUser();
-
-        // description 256 characters
-        $this->post(route('users.store'), $this->getCreateFields([
-            'description' => str_repeat('Long description', 16),
-        ]));
-        $this->assertSessionHasErrors('description');
-    }
-
     private function getEditFields(array $overrides = [])
     {
         return array_merge([
-            'name'        => 'User 1 name',
-            'description' => 'User 1 description',
+            'name'  => 'User 1 name',
+            'email' => 'example@mail.com',
         ], $overrides);
     }
 
@@ -101,7 +89,8 @@ class ManageUserTest extends TestCase
         $this->seeRouteIs('users.show', $user);
 
         $this->seeInDatabase('users', $this->getEditFields([
-            'id' => $user->id,
+            'id'   => $user->id,
+            'name' => 'User 1 Name',
         ]));
     }
 
@@ -127,19 +116,6 @@ class ManageUserTest extends TestCase
             'name' => str_repeat('Test Title', 7),
         ]));
         $this->assertSessionHasErrors('name');
-    }
-
-    /** @test */
-    public function validate_user_description_update_is_not_more_than_255_characters()
-    {
-        $this->loginAsUser();
-        $user = factory(User::class)->create(['name' => 'Testing 123']);
-
-        // description 256 characters
-        $this->patch(route('users.update', $user), $this->getEditFields([
-            'description' => str_repeat('Long description', 16),
-        ]));
-        $this->assertSessionHasErrors('description');
     }
 
     /** @test */

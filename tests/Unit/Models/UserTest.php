@@ -3,9 +3,8 @@
 namespace Tests\Unit\Models;
 
 use App\User;
-use App\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class UserTest extends TestCase
 {
@@ -25,14 +24,5 @@ class UserTest extends TestCase
         $link .= '</a>';
 
         $this->assertEquals($link, $user->name_link);
-    }
-
-    /** @test */
-    public function a_user_has_belongs_to_creator_relation()
-    {
-        $user = factory(User::class)->make();
-
-        $this->assertInstanceOf(User::class, $user->creator);
-        $this->assertEquals($user->creator_id, $user->creator->id);
     }
 }

@@ -27,14 +27,14 @@ Route::middleware('auth')->group(function () {
     Route::get('schools/page', 'SchoolController@page')->name('schools.page');
     Route::post('schools/save', 'SchoolController@save')->name('schools.save');
     Route::post('schools/uploadlogo', 'SchoolController@uploadlogo')->name('schools.uploadlogo');
+
+    /*
+     * ClassNames Routes
+     */
+    Route::resource('class_names', 'ClassNameController');
+
+    /*
+     * Users Routes
+     */
+    Route::resource('users', 'UserController');
 });
-
-/*
- * ClassNames Routes
- */
-Route::resource('class_names', 'ClassNameController');
-
-/*
- * Users Routes
- */
-Route::resource('users', 'UserController');

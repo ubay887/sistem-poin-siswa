@@ -16,9 +16,14 @@
                         {!! $errors->first('name', '<span class="invalid-feedback" role="alert">:message</span>') !!}
                     </div>
                     <div class="form-group">
-                        <label for="description" class="form-label">{{ __('user.description') }}</label>
-                        <textarea id="description" class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" name="description" rows="4">{{ old('description') }}</textarea>
-                        {!! $errors->first('description', '<span class="invalid-feedback" role="alert">:message</span>') !!}
+                        <label for="email" class="control-label">{{ __('user.email') }}</label>
+                        <input id="email" type="text" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
+                        {!! $errors->first('email', '<span class="invalid-feedback" role="alert">:message</span>') !!}
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="control-label">{{ __('user.password') }}</label>
+                        <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" value="{{ old  ('password') }}" required>
+                        {!! $errors->first('password', '<span class="invalid-feedback" role="alert">:message</span>') !!}
                     </div>
                 </div>
                 <div class="card-footer">

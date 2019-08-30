@@ -3,7 +3,6 @@
 namespace App\Policies;
 
 use App\User;
-use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class UserPolicy
@@ -17,7 +16,7 @@ class UserPolicy
      * @param  \App\User  $user
      * @return mixed
      */
-    public function view(User $user, User $user)
+    public function view(User $authUser, User $user)
     {
         // Update $user authorization to view $user here.
         return true;
@@ -30,7 +29,7 @@ class UserPolicy
      * @param  \App\User  $user
      * @return mixed
      */
-    public function create(User $user, User $user)
+    public function create(User $authUser, User $user)
     {
         // Update $user authorization to create $user here.
         return true;
@@ -43,7 +42,7 @@ class UserPolicy
      * @param  \App\User  $user
      * @return mixed
      */
-    public function update(User $user, User $user)
+    public function update(User $authUser, User $user)
     {
         // Update $user authorization to update $user here.
         return true;
@@ -56,7 +55,7 @@ class UserPolicy
      * @param  \App\User  $user
      * @return mixed
      */
-    public function delete(User $user, User $user)
+    public function delete(User $authUser, User $user)
     {
         // Update $user authorization to delete $user here.
         return true;

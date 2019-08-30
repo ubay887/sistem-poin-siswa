@@ -43,13 +43,19 @@ class UserController extends Controller
     {
         $this->authorize('create', new User);
 
-        $newUser = $request->validate([
-            'name'        => 'required|max:60',
-            'description' => 'nullable|max:255',
+        $newUserData = $request->validate([
+            'name'     => 'required|max:60',
+            'email'    => 'required|max:60',
+            'password' => 'nullable|max:255',
         ]);
-        $newUser['creator_id'] = auth()->id();
 
-        $user = User::create($newUser);
+        $newUserData['name'] = ucwords(strtolower($newUserData['name']));
+        $password = $newUserData['password'] ?: 'defaultpassword';
+        $newUserData['password'] = bcrypt($password);
+
+        $user = User::create($newUserData);
+
+        flash(__('user.created'), 'success');
 
         return redirect()->route('users.show', $user);
     }
@@ -89,11 +95,18 @@ class UserController extends Controller
     {
         $this->authorize('update', $user);
 
-        $userData = $request->validate([
-            'name'        => 'required|max:60',
-            'description' => 'nullable|max:255',
+        $UserData = $request->validate([
+            'name'     => 'required|max:60',
+            'email'    => 'required|max:255',
+            'password' => 'nullable|max:255',
         ]);
-        $user->update($userData);
+        $UserData['name'] = ucwords(strtolower($UserData['name']));
+        if ($UserData['password'] == null) {
+            unset($UserData['password']);
+        } else {
+            $UserData['password'] = bcrypt($UserData['password']);
+        }
+        $user->update($UserData);
 
         return redirect()->route('users.show', $user);
     }
