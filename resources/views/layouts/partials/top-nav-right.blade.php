@@ -1,7 +1,7 @@
 
 <div class="dropdown">
     <a href="#" class="nav-link pr-0 leading-none" data-toggle="dropdown">
-        <span class="avatar avatar-placeholder d-none"><img src="{{ asset('images/user.jpg') }}" class="header-brand-img" alt="User Logo"></span>
+        <span class="avatar avatar-placeholder d-none d-lg-block "><img src="{{ asset('images/user.jpg') }}" class="header-brand-img" alt="User Logo"></span>
         <span class="ml-2 d-lg-block">
             <span class="text-default">{{ auth()->user()->name }}</span>
             <small class="text-muted d-block mt-1">{{ auth()->user()->role }}</small>
