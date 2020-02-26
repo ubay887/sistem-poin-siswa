@@ -2,9 +2,9 @@
 
 namespace Tests\Unit\Models;
 
-use App\ClassName;
 use Tests\TestCase;
 use App\Entities\Users\User;
+use App\Entities\Classes\ClassName;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ClassNameTest extends TestCase

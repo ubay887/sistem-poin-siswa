@@ -2,8 +2,8 @@
 
 namespace Tests\Feature;
 
-use App\ClassName;
 use Tests\TestCase;
+use App\Entities\Classes\ClassName;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ManageClassNameTest extends TestCase

@@ -1,8 +1,8 @@
 <?php
 
-use App\ClassName;
 use App\Entities\Users\User;
 use Faker\Generator as Faker;
+use App\Entities\Classes\ClassName;
 
 $factory->define(ClassName::class, function (Faker $faker) {
 

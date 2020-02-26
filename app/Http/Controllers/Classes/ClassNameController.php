@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Classes;
 
-use App\ClassName;
 use Illuminate\Http\Request;
+use App\Entities\Classes\ClassName;
 use App\Http\Controllers\Controller;
 
 class ClassNameController extends Controller
@@ -52,7 +52,7 @@ class ClassNameController extends Controller
      * Update the specified className in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\ClassName  $className
+     * @param  \App\Entities\Classes\ClassName  $className
      * @return \Illuminate\Routing\Redirector
      */
     public function update(Request $request, ClassName $className)
@@ -74,7 +74,7 @@ class ClassNameController extends Controller
      * Remove the specified className from storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\ClassName  $className
+     * @param  \App\Entities\Classes\ClassName  $className
      * @return \Illuminate\Routing\Redirector
      */
     public function destroy(Request $request, ClassName $className)

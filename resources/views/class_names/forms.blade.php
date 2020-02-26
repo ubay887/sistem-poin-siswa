@@ -1,5 +1,5 @@
 @if (Request::get('action') == 'create')
-@can('create', new App\ClassName)
+@can('create', new App\Entities\Classes\ClassName)
     <form method="POST" action="{{ route('class_names.store') }}" accept-charset="UTF-8">
         {{ csrf_field() }}
         <div class="form-group">

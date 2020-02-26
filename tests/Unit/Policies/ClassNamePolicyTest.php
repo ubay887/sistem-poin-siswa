@@ -2,9 +2,9 @@
 
 namespace Tests\Unit\Policies;
 
-use App\ClassName;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use App\Entities\Classes\ClassName;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ClassNamePolicyTest extends TestCase
 {
