@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Entities\Users;
 
 use App\Role;
 use Illuminate\Notifications\Notifiable;

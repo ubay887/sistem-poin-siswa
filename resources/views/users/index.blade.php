@@ -5,7 +5,7 @@
 @section('content')
 <div class="mb-3">
     <div class="float-right">
-        @can('create', new App\User)
+        @can('create', new App\Entities\Users\User)
             <a href="{{ route('users.create') }}" class="btn btn-success">{{ __('user.create') }}</a>
         @endcan
     </div>

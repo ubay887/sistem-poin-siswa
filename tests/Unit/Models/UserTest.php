@@ -2,8 +2,8 @@
 
 namespace Tests\Unit\Models;
 
-use App\User;
 use Tests\TestCase;
+use App\Entities\Users\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class UserTest extends TestCase

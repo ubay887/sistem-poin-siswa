@@ -2,8 +2,8 @@
 
 namespace App\Policies;
 
-use App\User;
 use App\ClassName;
+use App\Entities\Users\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class ClassNamePolicy

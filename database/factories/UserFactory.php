@@ -1,8 +1,8 @@
 <?php
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-use App\User;
 use Illuminate\Support\Str;
+use App\Entities\Users\User;
 use Faker\Generator as Faker;
 
 /*
