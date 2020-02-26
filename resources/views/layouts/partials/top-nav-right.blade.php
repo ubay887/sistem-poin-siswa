@@ -9,25 +9,28 @@
     </a>
     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
         <a class="dropdown-item" href="#">
-            <i class="dropdown-icon fe fe-user"></i> {{ __('auth.profile') }}
+            <i class="dropdown-icon fe fe-user"></i> {{ __('nav_menu.user_profile') }}
         </a>
         <a class="dropdown-item" href="#">
-            <i class="dropdown-icon fe fe-lock"></i> {{ __('passwords.change_password') }}
+            <i class="dropdown-icon fe fe-lock"></i> {{ __('nav_menu.change_password') }}
         </a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="{{ route('users.index') }}">
-            <i class="dropdown-icon fe fe-users"></i> {{ __('user.list') }}
+            <i class="dropdown-icon fe fe-users"></i> {{ __('nav_menu.user_list') }}
+        </a>
+        <a class="dropdown-item" href="#">
+            <i class="dropdown-icon fe fe-grid"></i> {{ __('nav_menu.master_data') }}
         </a>
         <a class="dropdown-item" href="#">
             <i class="dropdown-icon fe fe-settings"></i> {{ __('nav_menu.system_settings') }}
         </a>
         <a class="dropdown-item" href="#">
-            <i class="dropdown-icon fe fe-database"></i> {{ __('nav_menu.backup') }}
+            <i class="dropdown-icon fe fe-database"></i> {{ __('nav_menu.backup_database') }}
         </a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="#"
             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-            <i class="dropdown-icon fe fe-log-out"></i> {{ __('Logout') }}
+            <i class="dropdown-icon fe fe-log-out"></i> {{ __('nav_menu.logout') }}
         </a>
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
     </div>
