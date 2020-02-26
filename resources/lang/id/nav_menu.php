@@ -1,6 +1,9 @@
 <?php
 
 return [
+    // Primary Menu
+    'dashboard' => 'Dashboard',
+
     // Right Menu
     'user_profile'    => 'Profil Saya',
     'change_password' => 'Ganti Password',

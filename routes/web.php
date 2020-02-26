@@ -19,7 +19,12 @@ Route::view('/', 'auth.login')->middleware('guest');
 
 Auth::routes();
 Route::middleware('auth')->group(function () {
-    Route::get('/home', 'HomeController@index')->name('home');
+    Route::group(['namespace' => 'Dashboard'], function () {
+        /*
+         * Dashboard Routes
+         */
+        Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+    });
 
     /*
      * Schools Routes
