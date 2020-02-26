@@ -2,7 +2,7 @@
 
 namespace App\Entities\Users;
 
-use App\Role;
+use App\Entities\Users\Role;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 

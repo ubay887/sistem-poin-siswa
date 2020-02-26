@@ -56,7 +56,7 @@
                     <div class="form-group">
                         <label for="role_id" class="form-label">{{ __('user.role_id') }} <span class="form-required">*</span></label>
                         <div class="form-group">
-                            @foreach (App\Role::$lists as $roleId => $roleType)
+                            @foreach (App\Entities\Users\Role::$lists as $roleId => $roleType)
                                 <input type="radio" value="{{ $roleId }}" {{ $user->role_id === $roleId ? 'checked' : '' }} id="role_id" name="role_id" >
                                 <label for="role_id">{{ __('user.'.$roleType) }}</label>&nbsp;&nbsp;&nbsp;
                             @endforeach
