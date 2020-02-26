@@ -1,10 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.app_setting')
 
 @section('title', __('school.create_school'))
 
-@section('content')
+@section('content-setting')
 <div class="row justify-content-center">
-    <div class="col-md-6">
+    <div class="col-md-7">
         <div class="card">
             <div class="card-header">
                 {{ __('school.create_school') }}
@@ -78,7 +78,7 @@
         </div>
     </div>
 </div>
-<div class="col-md-4">
+<div class="col-md-5">
     <div class="card">
         <div class="card-header">
             {{ __('school.create_logo') }}

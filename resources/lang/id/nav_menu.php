@@ -12,4 +12,7 @@ return [
     'system_settings' => 'Pengaturan Sistem',
     'backup_database' => 'Backup Database',
     'logout'          => 'Logout',
+
+    // Setting
+    'settings' => 'Pengaturan',
 ];
