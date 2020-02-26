@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\References;
 
-use App\School;
 use Illuminate\Http\Request;
+use App\Entities\Options\School;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
@@ -68,7 +68,7 @@ class SchoolController extends Controller
     /**
      * Upload school logo.
      *
-     * @param  \App\School  $school
+     * @param  \App\Entities\Options\School;  $school
      * @return \Illuminate\Routing\Redirector
      */
     public function uploadlogo(Request $request)

@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\School as DataSchool;
+use App\Entities\Options\School as DataSchool;
 
 /**
  * School Class (School).
