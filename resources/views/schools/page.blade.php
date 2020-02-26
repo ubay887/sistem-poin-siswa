@@ -9,7 +9,6 @@
             <div class="card-header">
                 {{ __('school.create_school') }}
             </div>
-
             <form method="POST" action="{{ route('schools.save') }}" accept-charset="UTF-8">
                 {{ csrf_field() }}
                 <div class="card-body">
@@ -73,34 +72,39 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                <input type="submit" value="{{ __('school.update') }}" class="btn btn-primary">
+                    <div style="text-align: right">
+                        <input type="submit" value="{{ __('school.update') }}" class="btn btn-primary">
+                    </div>
+                </div>
             </form>
         </div>
     </div>
-</div>
-<div class="col-md-5">
-    <div class="card">
-        <div class="card-header">
-            {{ __('school.create_logo') }}
-        </div>
-        <form method="POST" action="{{ route('schools.uploadlogo') }}" enctype="multipart/form-data">
-            {{ csrf_field() }}
-            <div class="card-body" style="padding-top: 2px; padding-bottom: 0px;">
-                @if (School::get('school_logo'))
-                    <img src="{{ asset('images/'.School::get('school_logo')) }}" alt="" style="padding: 20px" width="100%">
-                @else
-                    <img src="{{ asset('images/sample_logo.png') }}" alt="" width="100%">
-                @endif
-                <div class="form-group">
-                    <input id="search_logo" type="file" class="form-control{{ $errors->has('search_logo') ? ' is-invalid' : '' }}" name="search_logo" style="height: 43px" required>
-                    {!! $errors->first('search_logo', '<span class="invalid-feedback" role="alert">:message</span>') !!}
+    <div class="col-md-5">
+        <div class="card">
+            <div class="card-header">
+                {{ __('school.create_logo') }}
+            </div>
+            <form method="POST" action="{{ route('schools.uploadlogo') }}" enctype="multipart/form-data">
+                {{ csrf_field() }}
+                <div class="card-body" style="padding-top: 2px; padding-bottom: 0px;">
+                    @if (School::get('school_logo'))
+                        <img src="{{ asset('images/'.School::get('school_logo')) }}" alt="" style="padding: 20px" width="100%">
+                    @else
+                        <img src="{{ asset('images/sample_logo.png') }}" alt="" width="100%">
+                    @endif
+                    <div class="form-group">
+                        <input id="search_logo" type="file" class="form-control{{ $errors->has('search_logo') ? ' is-invalid' : '' }}" name="search_logo" style="height: 43px" required>
+                        {!! $errors->first('search_logo', '<span class="invalid-feedback" role="alert">:message</span>') !!}
+                    </div>
                 </div>
-            </div>
-            <br>
-            <div class="card-footer">
-                <input type="submit" value="{{ __('school.upload_logo') }}" class="btn btn-primary" id="upload_logo">
-            </div>
-        </form>
+                <br>
+                <div class="card-footer">
+                    <div style="text-align: right">
+                        <input type="submit" value="{{ __('school.upload_logo') }}" class="btn btn-primary" id="upload_logo">
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 @endsection
