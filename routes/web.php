@@ -30,21 +30,23 @@ Route::middleware('auth')->group(function () {
      * Admin Only
      */
     Route::group(['prefix' => 'admin'], function () {
-        /*
-         * Schools Routes
-         */
-        Route::get('schools/page', 'SchoolController@page')->name('schools.page');
-        Route::post('schools/save', 'SchoolController@save')->name('schools.save');
-        Route::post('schools/uploadlogo', 'SchoolController@uploadlogo')->name('schools.uploadlogo');
+        Route::group(['namespace' => 'References'], function () {
+            /*
+             * Schools Routes
+             */
+            Route::get('schools/page', 'SchoolController@page')->name('schools.page');
+            Route::post('schools/save', 'SchoolController@save')->name('schools.save');
+            Route::post('schools/uploadlogo', 'SchoolController@uploadlogo')->name('schools.uploadlogo');
+        });
 
         /*
          * ClassNames Routes
          */
-        Route::resource('class_names', 'ClassNameController');
+        Route::resource('class_names', 'Classes\ClassNameController');
 
         /*
          * Users Routes
          */
-        Route::resource('users', 'UserController');
+        Route::resource('users', 'Users\UserController');
     });
 });

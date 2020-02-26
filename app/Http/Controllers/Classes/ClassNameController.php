@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Classes;
 
 use App\ClassName;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ClassNameController extends Controller
 {
