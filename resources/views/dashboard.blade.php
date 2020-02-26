@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', __('nav_menu.dashboard'))
+
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-12">
