@@ -66,5 +66,15 @@ Route::middleware('auth')->group(function () {
             Route::get('password/change', 'ChangePasswordController@show')->name('password.change');
             Route::patch('password/change', 'ChangePasswordController@update')->name('password.change');
         });
+
+        Route::group(['namespace' => 'Backups'], function () {
+            /*
+             * Backup Restore Database Routes
+             */
+            Route::post('backups/upload', 'BackupController@upload')->name('backups.upload');
+            Route::post('backups/{fileName}/restore', 'BackupController@restore')->name('backups.restore');
+            Route::get('backups/{fileName}/dl', 'BackupController@download')->name('backups.download');
+            Route::resource('backups', 'BackupController', ['except' => ['create', 'show', 'edit']]);
+        });
     });
 });

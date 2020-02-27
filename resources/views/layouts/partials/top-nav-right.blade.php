@@ -24,7 +24,7 @@
         <a class="dropdown-item" href="{{ route('options.page') }}">
             <i class="dropdown-icon fe fe-settings"></i> {{ __('nav_menu.system_settings') }}
         </a>
-        <a class="dropdown-item" href="#">
+        <a class="dropdown-item" href="{{ route('backups.index') }}">
             <i class="dropdown-icon fe fe-database"></i> {{ __('nav_menu.backup_database') }}
         </a>
         <div class="dropdown-divider"></div>
