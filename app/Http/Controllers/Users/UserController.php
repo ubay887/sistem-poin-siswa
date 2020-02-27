@@ -102,10 +102,9 @@ class UserController extends Controller
             'name'     => 'required|min:5|max:60',
             'username' => 'required|min:5|max:60|unique:users,username,'.$user->id,
             'email'    => 'required|email|unique:users,email,'.$user->id,
-            'role_id'  => 'required|in:1,2,3',
             'password' => 'nullable|between:8,15',
         ]);
-        $UserData['name'] = ucwords(strtolower($UserData['name']));
+        $UserData['name'] = ucwords(strtoupper($UserData['name']));
         if ($UserData['password'] == null) {
             unset($UserData['password']);
         } else {
@@ -145,5 +144,23 @@ class UserController extends Controller
             return back();
         }
 
+    }
+
+    public function activate(Request $request, User $user)
+    {
+        $this->authorize('update', $user);
+
+        if ($user->is_active == 1) {
+            $user->is_active = 0;
+            $confirm = __('user.suspended');
+        } else {
+            $user->is_active = 1;
+            $confirm = __('user.activated');
+        }
+        $user->save();
+
+        flash($confirm, 'success');
+
+        return back();
     }
 }

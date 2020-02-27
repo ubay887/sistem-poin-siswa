@@ -18,7 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('username')->unique();
             $table->string('email')->unique();
-            $table->unsignedTinyInteger('role_id'); // 1:admin, 2:guru, 3:siswa
+            $table->unsignedTinyInteger('role_id'); // 1:administrator, 2:teacher, 3:student
+            $table->boolean('is_active')->default(1); // 1:active, 0:suspended
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

@@ -44,9 +44,12 @@ Route::middleware('auth')->group(function () {
          */
         Route::resource('class_names', 'Classes\ClassNameController');
 
-        /*
-         * Users Routes
-         */
-        Route::resource('users', 'Users\UserController');
+        Route::group(['namespace' => 'Users'], function () {
+            /*
+             * Users Routes
+             */
+            Route::patch('users/{user}/activate', 'UserController@activate')->name('users.activate');
+            Route::resource('users', 'UserController');
+        });
     });
 });

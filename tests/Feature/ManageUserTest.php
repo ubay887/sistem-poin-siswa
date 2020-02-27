@@ -71,10 +71,9 @@ class ManageUserTest extends TestCase
     private function getEditFields(array $overrides = [])
     {
         return array_merge([
-            'name'     => 'User 1 name',
+            'name'     => 'Username',
             'username' => 'username_example',
             'email'    => 'example@mail.com',
-            'role_id'  => 1, // 1:Admin, 2:Guru, 3:Siswa
         ], $overrides);
     }
 
@@ -94,7 +93,7 @@ class ManageUserTest extends TestCase
 
         $this->seeInDatabase('users', $this->getEditFields([
             'id'   => $user->id,
-            'name' => 'User 1 Name',
+            'name' => 'USERNAME',
         ]));
     }
 
@@ -137,6 +136,55 @@ class ManageUserTest extends TestCase
 
         $this->dontSeeInDatabase('users', [
             'id' => $user->id,
+        ]);
+    }
+
+    /** @test */
+    public function admin_can_suspend_a_user()
+    {
+        $this->loginAsUser();
+        $user = factory(User::class)->create(['role_id' => 2]);
+
+        $this->visit(route('users.show', $user));
+
+        $this->seeInDatabase('users', [
+            'id'        => $user->id,
+            'is_active' => 1,
+        ]);
+
+        $this->seeElement('button', ['id' => 'status-user']);
+
+        $this->press('status-user');
+
+        $this->seeInDatabase('users', [
+            'id'        => $user->id,
+            'is_active' => 0,
+        ]);
+    }
+
+    /** @test */
+    public function admin_can_activate_a_suspended_user()
+    {
+        $this->loginAsUser();
+        $user = factory(User::class)->create([
+            'role_id'   => 2,
+            'is_active' => 0,
+        ]);
+
+        $this->visit(route('users.show', $user));
+
+        $this->seeInDatabase('users', [
+            'id'        => $user->id,
+            'is_active' => 0,
+        ]);
+
+        $this->seeElement('button', ['id' => 'status-user']);
+
+        $this->press('status-user');
+
+        $this->seeInDatabase('users', [
+            'id'        => $user->id,
+            'is_active' => 1,
         ]);
     }
 }

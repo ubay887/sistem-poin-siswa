@@ -20,6 +20,15 @@
             <div class="card-footer">
                 @can('update', $user)
                     <a href="{{ route('users.edit', $user) }}" id="edit-user-{{ $user->id }}" class="btn btn-warning">{{ __('user.edit') }}</a>
+                    @php
+                        $confirm = $user->is_active == 1 ? __('user.suspend_confirm') : __('user.activate_confirm');
+                        $buttonName = $user->is_active == 1 ? __('user.suspend') : __('user.activate');
+                        $buttonClass = $user->is_active == 1 ? 'danger' : 'primary';
+                    @endphp
+                    <form method="POST" action="{{ route('users.activate', $user) }}" accept-charset="UTF-8" onsubmit="return confirm('{{ $confirm }}')" class="del-form" style="display: inline;">
+                        {{ csrf_field() }} {{ method_field('patch') }}
+                        <button type="submit" class="btn btn-{{ $buttonClass }}" id="status-user">{{ $buttonName }}</button>
+                    </form>
                 @endcan
                 <a href="{{ route('users.index') }}" class="btn btn-link">{{ __('user.back_to_index') }}</a>
             </div>
