@@ -90,7 +90,7 @@
                     @if (Option::get('option_logo'))
                         <img src="{{ asset('images/'.Option::get('option_logo')) }}" alt="" style="padding: 20px" width="100%">
                     @else
-                        <img src="{{ asset('images/sample_logo.png') }}" alt="" width="100%">
+                        <img src="{{ asset('images/sample_logo.png') }}" alt="" style="padding: 20px" width="100%">
                     @endif
                     <div class="form-group">
                         <input id="search_logo" type="file" class="form-control{{ $errors->has('search_logo') ? ' is-invalid' : '' }}" name="search_logo" style="height: 43px" required>
