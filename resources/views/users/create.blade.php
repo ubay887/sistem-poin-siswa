@@ -10,35 +10,38 @@
             <form method="POST" action="{{ route('users.store') }}" accept-charset="UTF-8">
                 {{ csrf_field() }}
                 <div class="card-body">
-                    <div class="form-group">
-                        <label for="name" class="form-label">{{ __('user.name') }} <span class="form-required">*</span></label>
-                        <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required>
-                        {!! $errors->first('name', '<span class="invalid-feedback" role="alert">:message</span>') !!}
-                    </div>
-                    <div class="form-group">
-                        <label for="username" class="control-label">{{ __('user.username') }} <span class="form-required">*</span></label>
-                        <input id="username" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" required>
-                        {!! $errors->first('username', '<span class="invalid-feedback" role="alert">:message</span>') !!}
-                    </div>
-                    <div class="form-group">
-                        <label for="email" class="control-label">{{ __('user.email') }} <span class="form-required">*</span></label>
-                        <input id="email" type="text" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
-                        {!! $errors->first('email', '<span class="invalid-feedback" role="alert">:message</span>') !!}
-                    </div>
-                    <div class="form-group">
-                        <label for="role_id" class="form-label">{{ __('user.role_id') }} <span class="form-required">*</span></label>
-                        <div class="form-group">
-                            @foreach (App\Entities\Users\Role::$lists as $roleId => $roleType)
-                                <input type="radio" value="{{ $roleId }}" {{ 1 === $roleId ? 'checked' : '' }} id="role_id" name="role_id" >
-                                <label for="role_id">{{ __('user.'.$roleType) }}</label>&nbsp;&nbsp;&nbsp;
-                            @endforeach
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="name" class="form-label">{{ __('user.name') }} <span class="form-required">*</span></label>
+                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required>
+                                {!! $errors->first('name', '<span class="invalid-feedback" role="alert">:message</span>') !!}
+                            </div>
                         </div>
-                        {!! $errors->first('jenis_kelamin', '<span class="invalid-feedback" role="alert">:message</span>') !!}
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="username" class="form-label">{{ __('user.username') }} <span class="form-required">*</span></label>
+                                <input id="username" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" required>
+                                {!! $errors->first('username', '<span class="invalid-feedback" role="alert">:message</span>') !!}
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="password" class="control-label">{{ __('user.password') }} <span class="form-required">*</span></label>
-                        <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" value="{{ old  ('password') }}" required>
-                        {!! $errors->first('password', '<span class="invalid-feedback" role="alert">:message</span>') !!}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="email" class="form-label">{{ __('user.email') }}</label>
+                                <input id="email" type="text" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}">
+                                {!! $errors->first('email', '<span class="invalid-feedback" role="alert">:message</span>') !!}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="password" class="form-label">{{ __('user.password') }}</label>
+                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" value="{{ old  ('password') }}">
+                                <small class="form-text small">{!! __('user.default_password_note', ['password' => 'password']) !!}</small>
+                                {!! $errors->first('password', '<span class="invalid-feedback" role="alert">:message</span>') !!}
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="card-footer">

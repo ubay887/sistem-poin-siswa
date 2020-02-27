@@ -38,4 +38,8 @@ return [
     'email'    => 'Email',
     'role_id'  => 'Role',
     'password' => 'Password',
+
+    // Form Texts
+    'password_form_note'    => 'Isi password <strong>hanya</strong> untuk mengganti password',
+    'default_password_note' => 'Password Default: <code>:password</code>',
 ];

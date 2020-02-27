@@ -23,10 +23,9 @@ class ManageUserTest extends TestCase
     private function getCreateFields(array $overrides = [])
     {
         return array_merge([
-            'name'     => 'User 1 name',
+            'name'     => 'Username',
             'username' => 'username_example',
             'email'    => 'example@mail.com',
-            'role_id'  => 1, // 1:Admin, 2:Guru, 3:Siswa
         ], $overrides);
     }
 
@@ -40,9 +39,10 @@ class ManageUserTest extends TestCase
         $this->seeRouteIs('users.create');
 
         $this->submitForm(__('user.create'), $this->getCreateFields());
-
+        // dd(\DB::table('users')->get());
         $this->seeInDatabase('users', $this->getCreateFields([
-            'name' => 'User 1 Name',
+            'name'    => 'USERNAME',
+            'role_id' => 1,
         ]));
     }
 

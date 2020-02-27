@@ -47,12 +47,12 @@ class UserController extends Controller
         $newUserData = $request->validate([
             'name'     => 'required|min:5|max:60',
             'username' => 'required|min:5|max:60|unique:users,username',
-            'email'    => 'required|email|unique:users,email',
-            'role_id'  => 'required|in:1,2,3',
+            'email'    => 'nullable|email|unique:users,email',
             'password' => 'nullable|between:8,15',
         ]);
 
-        $newUserData['name'] = ucwords(strtolower($newUserData['name']));
+        $newUserData['name'] = ucwords(strtoupper($newUserData['name']));
+        $newUserData['role_id'] = 1;
         $password = $newUserData['password'] ?: 'defaultpassword';
         $newUserData['password'] = bcrypt($password);
 

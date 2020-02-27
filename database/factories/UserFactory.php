@@ -18,7 +18,7 @@ use Faker\Generator as Faker;
 
 $factory->define(User::class, function (Faker $faker) {
     return [
-        'name'              => $faker->name,
+        'name'              => ucwords(strtoupper($faker->name)),
         'username'          => $faker->name,
         'email'             => $faker->unique()->safeEmail,
         'role_id'           => 1,
