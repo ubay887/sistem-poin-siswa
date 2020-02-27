@@ -51,5 +51,14 @@ Route::middleware('auth')->group(function () {
             Route::patch('users/{user}/activate', 'UserController@activate')->name('users.activate');
             Route::resource('users', 'UserController');
         });
+
+        Route::group(['namespace' => 'Auth'], function () {
+            /*
+             * Profile Routes
+             */
+            Route::get('profile', 'ProfileController@show')->name('profile.show');
+            Route::get('profile/edit', 'ProfileController@edit')->name('profile.edit');
+            Route::patch('profile/update', 'ProfileController@update')->name('profile.update');
+        });
     });
 });

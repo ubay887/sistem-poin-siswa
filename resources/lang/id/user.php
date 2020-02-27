@@ -52,4 +52,10 @@ return [
     'activate_confirm' => 'Anda yakin akan mengaktifkan user ini?',
     'activated'        => 'User telah aktif dan sudah dapat login ke sistem ini.',
     'not_suspended'    => 'User yang sedang login tidak dapat di-suspend.',
+
+    // Profile
+    'profile'         => 'Profil',
+    'profile_edit'    => 'Edit Profil Saya',
+    'profile_update'  => 'Update Profil',
+    'profile_updated' => 'Update Profil Anda telah berhasil.',
 ];
