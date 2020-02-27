@@ -18,7 +18,7 @@
         <a class="dropdown-item" href="{{ route('users.index') }}">
             <i class="dropdown-icon fe fe-users"></i> {{ __('nav_menu.user_list') }}
         </a>
-        <a class="dropdown-item" href="#">
+        <a class="dropdown-item" href="{{ route('class_names.index') }}">
             <i class="dropdown-icon fe fe-grid"></i> {{ __('nav_menu.master_data') }}
         </a>
         <a class="dropdown-item" href="{{ route('options.page') }}">

@@ -1,8 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.app_master')
 
 @section('title', __('class_name.list'))
 
-@section('content')
+@section('content-master')
 <div class="mb-3">
     <div class="float-right">
         @can('create', new App\Entities\Classes\ClassName)
