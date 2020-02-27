@@ -29,5 +29,5 @@ return [
 
     // Attributes
     'name'        => 'Nama Kelas',
-    'description' => 'Deskripsi Kelas',
+    'description' => 'Deskripsi',
 ];

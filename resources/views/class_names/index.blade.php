@@ -6,7 +6,9 @@
 <div class="mb-3">
     <div class="float-right">
         @can('create', new App\Entities\Classes\ClassName)
-            <a href="{{ route('class_names.index', ['action' => 'create']) }}" class="btn btn-success">{{ __('class_name.create') }}</a>
+            @if (is_null(request('action')))
+                <a href="{{ route('class_names.index', ['action' => 'create']) }}" class="btn btn-success">{{ __('class_name.create') }}</a>
+            @endif
         @endcan
     </div>
     <h1 class="page-title">{{ __('class_name.list') }} <small>{{ __('app.total') }} : {{ $classNames->total() }} {{ __('class_name.class_name') }}</small></h1>
@@ -37,7 +39,7 @@
                 <tbody>
                     @foreach($classNames as $key => $className)
                     <tr>
-                        <td class="text-center">{{ $classNames->firstItem() + $key }}</td>
+                        <td class="text-center">{{ $loop->iteration }}</td>
                         <td>{{ $className->name }}</td>
                         <td>{{ $className->description }}</td>
                         <td class="text-center">
