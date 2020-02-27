@@ -42,4 +42,14 @@ return [
     // Form Texts
     'password_form_note'    => 'Isi password <strong>hanya</strong> untuk mengganti password',
     'default_password_note' => 'Password Default: <code>:password</code>',
+
+    // Suspended
+    'status'           => 'Status',
+    'suspend'          => 'Suspend User Ini',
+    'suspend_confirm'  => 'Anda yakin akan men-suspend user ini?',
+    'suspended'        => 'User telah di-suspend. Tidak bisa login ke sistem ini.',
+    'activate'         => 'Aktifkan User Ini',
+    'activate_confirm' => 'Anda yakin akan mengaktifkan user ini?',
+    'activated'        => 'User telah aktif dan sudah dapat login ke sistem ini.',
+    'not_suspended'    => 'User yang sedang login tidak dapat di-suspend.',
 ];

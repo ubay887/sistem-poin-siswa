@@ -150,16 +150,20 @@ class UserController extends Controller
     {
         $this->authorize('update', $user);
 
-        if ($user->is_active == 1) {
-            $user->is_active = 0;
-            $confirm = __('user.suspended');
-        } else {
-            $user->is_active = 1;
-            $confirm = __('user.activated');
-        }
-        $user->save();
+        if ($user->id != auth()->user()->id) {
+            if ($user->is_active == 1) {
+                $user->is_active = 0;
+                $confirm = __('user.suspended');
+            } else {
+                $user->is_active = 1;
+                $confirm = __('user.activated');
+            }
+            $user->save();
 
-        flash($confirm, 'success');
+            flash($confirm, 'success');
+        } else {
+            flash(__('user.not_suspended'), 'error');
+        }
 
         return back();
     }
