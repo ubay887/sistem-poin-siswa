@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="row justify-content-center">
-    <div class="col-md-5">
+    <div class="col-md-4">
         <div class="card">
             <div class="card-header">@yield('title')</div>
             <table class="table table-md card-table">
