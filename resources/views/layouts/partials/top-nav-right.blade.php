@@ -11,7 +11,7 @@
         <a class="dropdown-item" href="{{ route('profile.show') }}">
             <i class="dropdown-icon fe fe-user"></i> {{ __('nav_menu.user_profile') }}
         </a>
-        <a class="dropdown-item" href="#">
+        <a class="dropdown-item" href="{{ route('password.change') }}">
             <i class="dropdown-icon fe fe-lock"></i> {{ __('nav_menu.change_password') }}
         </a>
         <div class="dropdown-divider"></div>

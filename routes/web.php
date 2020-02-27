@@ -59,6 +59,12 @@ Route::middleware('auth')->group(function () {
             Route::get('profile', 'ProfileController@show')->name('profile.show');
             Route::get('profile/edit', 'ProfileController@edit')->name('profile.edit');
             Route::patch('profile/update', 'ProfileController@update')->name('profile.update');
+
+            /*
+             * Change Password Routes
+             */
+            Route::get('password/change', 'ChangePasswordController@show')->name('password.change');
+            Route::patch('password/change', 'ChangePasswordController@update')->name('password.change');
         });
     });
 });
