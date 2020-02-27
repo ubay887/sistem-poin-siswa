@@ -32,7 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::group(['prefix' => 'admin'], function () {
         Route::group(['namespace' => 'References'], function () {
             /*
-             * Options Routes
+             * References Routes
              */
             Route::get('options/page', 'OptionController@page')->name('options.page');
             Route::post('options/save', 'OptionController@save')->name('options.save');

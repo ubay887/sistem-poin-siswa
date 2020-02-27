@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entities\Options;
+namespace App\Entities\References;
 
 use Illuminate\Database\Eloquent\Model;
 

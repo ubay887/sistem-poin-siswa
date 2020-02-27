@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Entities\Options\Option as DataOption;
+use App\Entities\References\Option as DataOption;
 
 /**
  * Option Class (Option).

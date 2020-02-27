@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\References;
 
 use Illuminate\Http\Request;
-use App\Entities\Options\Option;
+use App\Entities\References\Option;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
@@ -68,7 +68,7 @@ class OptionController extends Controller
     /**
      * Upload option logo.
      *
-     * @param  \App\Entities\Options\Option;  $option
+     * @param  \App\Entities\References\Option;  $option
      * @return \Illuminate\Routing\Redirector
      */
     public function uploadlogo(Request $request)

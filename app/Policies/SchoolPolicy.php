@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\Entities\Users\User;
-use App\Entities\Options\Option;
+use App\Entities\References\Option;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class OptionPolicy
@@ -14,7 +14,7 @@ class OptionPolicy
      * Determine whether the user can create option.
      *
      * @param  \App\User  $user
-     * @param  \App\Entities\Options\Option;  $option
+     * @param  \App\Entities\References\Option;  $option
      * @return mixed
      */
     // public function create(User $user, Option $option)
@@ -27,7 +27,7 @@ class OptionPolicy
      * Determine whether the user can update the option.
      *
      * @param  \App\User  $user
-     * @param  \App\Entities\Options\Option;  $option
+     * @param  \App\Entities\References\Option;  $option
      * @return mixed
      */
     public function update(User $user, Option $option)
@@ -40,7 +40,7 @@ class OptionPolicy
      * Determine whether the user can delete the option.
      *
      * @param  \App\User  $user
-     * @param  \App\Entities\Options\Option;  $option
+     * @param  \App\Entities\References\Option;  $option
      * @return mixed
      */
     // public function delete(User $user, Option $option)
