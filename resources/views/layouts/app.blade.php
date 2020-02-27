@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-@if (School::get('school_logo'))
-    <link rel="shortcut icon" size="114x114" href="{{ asset('images/'.School::get('school_logo')) }}">
+@if (Option::get('option_logo'))
+    <link rel="shortcut icon" size="114x114" href="{{ asset('images/'.Option::get('option_logo')) }}">
 @else
     <link rel="shortcut icon" size="114x114" href="{{ asset('images/sample_logo.png') }}">
 @endif

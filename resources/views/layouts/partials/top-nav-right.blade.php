@@ -21,7 +21,7 @@
         <a class="dropdown-item" href="#">
             <i class="dropdown-icon fe fe-grid"></i> {{ __('nav_menu.master_data') }}
         </a>
-        <a class="dropdown-item" href="{{ route('schools.page') }}">
+        <a class="dropdown-item" href="{{ route('options.page') }}">
             <i class="dropdown-icon fe fe-settings"></i> {{ __('nav_menu.system_settings') }}
         </a>
         <a class="dropdown-item" href="#">

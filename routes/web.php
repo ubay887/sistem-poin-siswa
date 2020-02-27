@@ -32,11 +32,11 @@ Route::middleware('auth')->group(function () {
     Route::group(['prefix' => 'admin'], function () {
         Route::group(['namespace' => 'References'], function () {
             /*
-             * Schools Routes
+             * Options Routes
              */
-            Route::get('schools/page', 'SchoolController@page')->name('schools.page');
-            Route::post('schools/save', 'SchoolController@save')->name('schools.save');
-            Route::post('schools/uploadlogo', 'SchoolController@uploadlogo')->name('schools.uploadlogo');
+            Route::get('options/page', 'OptionController@page')->name('options.page');
+            Route::post('options/save', 'OptionController@save')->name('options.save');
+            Route::post('options/uploadlogo', 'OptionController@uploadlogo')->name('options.uploadlogo');
         });
 
         /*

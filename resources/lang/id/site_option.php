@@ -2,5 +2,5 @@
 
 return [
     // Label
-    'school' => 'Data Sekolah',
+    'option' => 'Data Sekolah',
 ];

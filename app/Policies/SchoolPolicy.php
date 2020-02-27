@@ -3,49 +3,49 @@
 namespace App\Policies;
 
 use App\Entities\Users\User;
-use App\Entities\Options\School;
+use App\Entities\Options\Option;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class SchoolPolicy
+class OptionPolicy
 {
     use HandlesAuthorization;
 
     /**
-     * Determine whether the user can create school.
+     * Determine whether the user can create option.
      *
      * @param  \App\User  $user
-     * @param  \App\Entities\Options\School;  $school
+     * @param  \App\Entities\Options\Option;  $option
      * @return mixed
      */
-    // public function create(User $user, School $school)
+    // public function create(User $user, Option $option)
     // {
-    //     // Update $user authorization to create $school here.
+    //     // Update $user authorization to create $option here.
     //     return true;
     // }
 
     /**
-     * Determine whether the user can update the school.
+     * Determine whether the user can update the option.
      *
      * @param  \App\User  $user
-     * @param  \App\Entities\Options\School;  $school
+     * @param  \App\Entities\Options\Option;  $option
      * @return mixed
      */
-    public function update(User $user, School $school)
+    public function update(User $user, Option $option)
     {
-        // Update $user authorization to update $school here.
+        // Update $user authorization to update $option here.
         return true;
     }
 
     /**
-     * Determine whether the user can delete the school.
+     * Determine whether the user can delete the option.
      *
      * @param  \App\User  $user
-     * @param  \App\Entities\Options\School;  $school
+     * @param  \App\Entities\Options\Option;  $option
      * @return mixed
      */
-    // public function delete(User $user, School $school)
+    // public function delete(User $user, Option $option)
     // {
-    //     // Update $user authorization to delete $school here.
+    //     // Update $user authorization to delete $option here.
     //     return true;
     // }
 }
