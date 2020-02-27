@@ -74,4 +74,26 @@ class LoginController extends Controller
     {
         return $request->only($this->username(), 'password');
     }
+
+    /**
+     * The user has been authenticated.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  mixed  $user
+     * @return mixed
+     */
+    protected function authenticated(Request $request, $user)
+    {
+        if ($user->is_active == 0) {
+            $this->guard()->logout();
+            $request->session()->flush();
+            $request->session()->regenerate();
+
+            flash(__('auth.suspended'), 'error');
+
+            return redirect()->route('login');
+        }
+
+        flash(__('auth.welcome', ['name' => $user->name]));
+    }
 }
