@@ -1,15 +1,23 @@
 <?php
 
 use App\Entities\Users\User;
-use App\Entities\Students\Student;
 use Faker\Generator as Faker;
+use App\Entities\Students\Student;
+use App\Entities\Classes\ClassName;
 
 $factory->define(Student::class, function (Faker $faker) {
 
     return [
-        'name' => $faker->word,
-        'description' => $faker->sentence,
-        'creator_id' => function () {
+        'class_id'    => function () {
+            return factory(ClassName::class)->create()->id;
+        },
+        'nis'         => $faker->word,
+        'name'        => $faker->word,
+        'gender_id'   => 1,
+        'religion_id' => 1,
+        'address'     => $faker->sentence,
+        'is_active'   => 1,
+        'creator_id'  => function () {
             return factory(User::class)->create()->id;
         },
     ];

@@ -32,6 +32,7 @@ class ManageStudentTest extends TestCase
             'gender_id'     => 1,
             'religion_id'   => 1,
             'phone'         => '085752669087',
+            'email'         => 'herdian@example.net',
             'address'       => 'Jl. Martapura Lama Rt.6 Kec. Sungai Lulut Kab. Banjar',
             'father_name'   => 'Murjani',
             'father_phone'  => '098787656765',

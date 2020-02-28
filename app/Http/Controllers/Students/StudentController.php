@@ -45,9 +45,26 @@ class StudentController extends Controller
         $this->authorize('create', new Student);
 
         $newStudent = $request->validate([
-            'name'        => 'required|max:60',
-            'description' => 'nullable|max:255',
+            'class_id'      => 'required|exists:class_names,id',
+            'nis'           => 'required|max:60',
+            'nisn'          => 'nullable|max:60',
+            'name'          => 'required|max:60',
+            'pob'           => 'nullable|max:60',
+            'dob'           => 'nullable|date|date_format:Y-m-d',
+            'gender_id'     => 'required|numeric|in:0,1',
+            'religion_id'   => 'required|numeric|in:1,2,3,4,5,6,99',
+            'phone'         => 'nullable|max:14',
+            'email'         => 'nullable|max:60',
+            'address'       => 'nullable|max:255',
+            'father_name'   => 'nullable|max:60',
+            'father_phone'  => 'nullable|max:14',
+            'mother_name'   => 'nullable|max:60',
+            'mother_phone'  => 'nullable|max:14',
+            'wali_name'     => 'nullable|max:60',
+            'wali_relation' => 'nullable|max:60',
+            'wali_phone'    => 'nullable|max:14',
         ]);
+        $newStudent['is_active'] = 1;
         $newStudent['creator_id'] = auth()->id();
 
         $student = Student::create($newStudent);
