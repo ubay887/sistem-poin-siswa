@@ -27,6 +27,11 @@
     <form method="POST" action="{{ route('class_names.update', $editableClassName) }}" accept-charset="UTF-8">
         {{ csrf_field() }} {{ method_field('patch') }}
         <div class="form-group">
+            <label for="level_id" class="form-label">{{ __('class_name.level_id') }} <span class="form-required">*</span></label>
+            <input id="level_id" type="text" class="form-control{{ $errors->has('level_id') ? ' is-invalid' : '' }}" name="level_id" value="{{ old('level_id', $editableClassName->level_id) }}" required>
+            {!! $errors->first('level_id', '<span class="invalid-feedback" role="alert">:message</span>') !!}
+        </div>
+        <div class="form-group">
             <label for="name" class="form-label">{{ __('class_name.name') }} <span class="form-required">*</span></label>
             <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name', $editableClassName->name) }}" required>
             {!! $errors->first('name', '<span class="invalid-feedback" role="alert">:message</span>') !!}

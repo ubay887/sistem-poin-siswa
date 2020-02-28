@@ -89,23 +89,18 @@ class ManageClassNameTest extends TestCase
         $this->click('edit-class_name-'.$className->id);
         $this->seeRouteIs('class_names.index', ['action' => 'edit', 'id' => $className->id, 'q' => '123']);
 
-        $this->submitForm(__('class_name.update'), [
-            'name'        => 'ClassName 1 name',
-            'description' => 'ClassName 1 description',
-        ]);
+        $this->submitForm(__('class_name.update'), $this->getEditFields());
 
         $this->seeRouteIs('class_names.index', ['q' => '123']);
 
-        $this->seeInDatabase('class_names', [
-            'name'        => 'ClassName 1 name',
-            'description' => 'ClassName 1 description',
-        ]);
+        $this->seeInDatabase('class_names', $this->getEditFields());
     }
 
     private function getEditFields(array $overrides = [])
     {
         return array_merge([
-            'name'        => 'ClassName 1 name',
+            'level_id'    => 12,
+            'name'        => 'IPS 2',
             'description' => 'ClassName 1 description',
         ], $overrides);
     }
