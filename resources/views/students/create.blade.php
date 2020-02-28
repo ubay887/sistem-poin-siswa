@@ -64,8 +64,13 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="gender_id" class="form-label">{{ __('student.gender_id') }} <span class="form-required">*</span></label>
-                                <input id="gender_id" type="text" class="form-control{{ $errors->has('gender_id') ? ' is-invalid' : '' }}" name="gender_id" value="{{ old('gender_id') }}" required>
+                                <label for="gender_id" class="form-label">{{ __('app.gender_id') }}  <span class="form-required">*</span></label>
+                                <div class="form-group">
+                                @foreach (App\Entities\References\Gender::$lists as $genderId => $genderType)
+                                    <input type="radio" value="{{ $genderId }}" {{ 1 === $genderId ? 'checked' : '' }} id="gender_{{ $genderId }}" name="gender_id" >
+                                    <label for="gender_{{ $genderId }}">{{ __('app.'.$genderType) }}</label><br>
+                                @endforeach
+                                </div>
                                 {!! $errors->first('gender_id', '<span class="invalid-feedback" role="alert">:message</span>') !!}
                             </div>
                         </div>
