@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 use App\Entities\Students\Student;
+use App\Entities\Classes\ClassName;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ManageStudentTest extends TestCase
@@ -23,8 +24,22 @@ class ManageStudentTest extends TestCase
     private function getCreateFields(array $overrides = [])
     {
         return array_merge([
-            'name'        => 'Student 1 name',
-            'description' => 'Student 1 description',
+            'nis'           => '123456',
+            'nisn'          => '5678987655667',
+            'name'          => 'Akhmad Herdian',
+            'pob'           => 'Pelaihari',
+            'dob'           => '1989-09-09',
+            'gender_id'     => 1,
+            'religion_id'   => 1,
+            'phone'         => '085752669087',
+            'address'       => 'Jl. Martapura Lama Rt.6 Kec. Sungai Lulut Kab. Banjar',
+            'father_name'   => 'Murjani',
+            'father_phone'  => '098787656765',
+            'mother_name'   => 'Nurjannah',
+            'mother_phone'  => '098787656766',
+            'wali_name'     => 'Zarkani',
+            'wali_relation' => 'Paman',
+            'wali_phone'    => '098787656788',
         ], $overrides);
     }
 
@@ -32,16 +47,23 @@ class ManageStudentTest extends TestCase
     public function user_can_create_a_student()
     {
         $this->loginAsAdmin();
+
+        $className = $user = factory(ClassName::class)->create();
+
         $this->visitRoute('students.index');
 
         $this->click(__('student.create'));
         $this->seeRouteIs('students.create');
 
-        $this->submitForm(__('student.create'), $this->getCreateFields());
+        $this->submitForm(__('student.create'), $this->getCreateFields([
+            'class_id' => $className->id,
+        ]));
 
         $this->seeRouteIs('students.show', Student::first());
 
-        $this->seeInDatabase('students', $this->getCreateFields());
+        $this->seeInDatabase('students', $this->getCreateFields([
+            'class_id' => $className->id,
+        ]));
     }
 
     /** @test */
