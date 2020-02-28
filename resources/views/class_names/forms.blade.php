@@ -19,7 +19,7 @@
         </div>
         <div class="form-group">
             <label for="description" class="form-label">{{ __('class_name.description') }}</label>
-            <textarea id="description" class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" name="description" rows="4">{{ old('description') }}</textarea>
+            <textarea id="description" class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" name="description" rows="3">{{ old('description') }}</textarea>
             {!! $errors->first('description', '<span class="invalid-feedback" role="alert">:message</span>') !!}
         </div>
         <input type="submit" value="{{ __('class_name.create') }}" class="btn btn-success">
@@ -48,7 +48,7 @@
         </div>
         <div class="form-group">
             <label for="description" class="form-label">{{ __('class_name.description') }}</label>
-            <textarea id="description" class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" name="description" rows="4">{{ old('description', $editableClassName->description) }}</textarea>
+            <textarea id="description" class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" name="description" rows="3">{{ old('description', $editableClassName->description) }}</textarea>
             {!! $errors->first('description', '<span class="invalid-feedback" role="alert">:message</span>') !!}
         </div>
         <input name="page" value="{{ request('page') }}" type="hidden">
