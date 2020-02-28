@@ -8,17 +8,17 @@ namespace App\Entities\Classes;
 class Level
 {
     public static $lists = [
-        1  => 'I',
-        2  => 'II',
-        3  => 'III',
-        4  => 'IV',
-        5  => 'V',
-        6  => 'VI',
-        7  => 'VII',
-        8  => 'VIII',
-        9  => 'IX',
-        10 => 'X',
-        11 => 'XI',
-        12 => 'XII',
+        1  => 'i',
+        2  => 'ii',
+        3  => 'iii',
+        4  => 'iv',
+        5  => 'v',
+        6  => 'vi',
+        7  => 'vii',
+        8  => 'viii',
+        9  => 'ix',
+        10 => 'x',
+        11 => 'xi',
+        12 => 'xii',
     ];
 }

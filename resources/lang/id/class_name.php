@@ -27,6 +27,20 @@ return [
     'undeleted'      => 'Data Kelas gagal dihapus.',
     'undeleteable'   => 'Data Kelas tidak dapat dihapus.',
 
+    // Level
+    'i'    => 'I',
+    'ii'   => 'II',
+    'iii'  => 'III',
+    'iv'   => 'IV',
+    'v'    => 'V',
+    'vi'   => 'VI',
+    'vii'  => 'VII',
+    'viii' => 'VIII',
+    'ix'   => 'IX',
+    'x'    => 'X',
+    'xi'   => 'XI',
+    'xii'  => 'XII',
+
     // Attributes
     'level_id'    => 'Tingkat',
     'name'        => 'Nama Kelas',

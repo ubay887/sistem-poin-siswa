@@ -31,6 +31,7 @@
                 <thead>
                     <tr>
                         <th class="text-center">{{ __('app.table_no') }}</th>
+                        <th>{{ __('class_name.level_id') }}</th>
                         <th>{{ __('class_name.name') }}</th>
                         <th>{{ __('class_name.description') }}</th>
                         <th class="text-center">{{ __('app.action') }}</th>
@@ -40,6 +41,7 @@
                     @foreach($classNames as $key => $className)
                     <tr>
                         <td class="text-center">{{ $loop->iteration }}</td>
+                        <td>{{ $className->level }}</td>
                         <td>{{ $className->name }}</td>
                         <td>{{ $className->description }}</td>
                         <td class="text-center">

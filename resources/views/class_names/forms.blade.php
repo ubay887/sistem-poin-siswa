@@ -4,7 +4,12 @@
         {{ csrf_field() }}
         <div class="form-group">
             <label for="level_id" class="form-label">{{ __('class_name.level_id') }} <span class="form-required">*</span></label>
-            <input id="level_id" type="text" class="form-control{{ $errors->has('level_id') ? ' is-invalid' : '' }}" name="level_id" value="{{ old('level_id') }}" required>
+            <select name="level_id" id="level_id" class="form-control" required>
+                <option value="">-- {{ __('class_name.list') }} --</option>
+                @foreach (App\Entities\Classes\Level::$lists as $typeId => $typeName)
+                    <option value="{{ $typeId }}">{{ __('class_name.'.$typeName) }}</option>
+                @endforeach
+            </select>
             {!! $errors->first('level_id', '<span class="invalid-feedback" role="alert">:message</span>') !!}
         </div>
         <div class="form-group">
@@ -28,7 +33,12 @@
         {{ csrf_field() }} {{ method_field('patch') }}
         <div class="form-group">
             <label for="level_id" class="form-label">{{ __('class_name.level_id') }} <span class="form-required">*</span></label>
-            <input id="level_id" type="text" class="form-control{{ $errors->has('level_id') ? ' is-invalid' : '' }}" name="level_id" value="{{ old('level_id', $editableClassName->level_id) }}" required>
+            <select name="level_id" id="level_id" class="form-control" required>
+                <option value="">-- {{ __('class_name.list') }} --</option>
+                @foreach (App\Entities\Classes\Level::$lists as $typeId => $typeName)
+                    <option value="{{ $typeId }}" {{ $typeId == $editableClassName->level_id ? 'selected' : '' }}>{{ __('class_name.'.$typeName) }}</option>
+                @endforeach
+            </select>
             {!! $errors->first('level_id', '<span class="invalid-feedback" role="alert">:message</span>') !!}
         </div>
         <div class="form-group">
