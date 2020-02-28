@@ -3,4 +3,7 @@
     <a href="{{ route('class_names.index') }}" style="padding: 8px" class="list-group-item list-group-item-action d-flex align-items-center {{ in_array(Request::segment(2), ['class_names', null]) ? 'active' : '' }}">
         <span class="icon mr-2"><i class="fe fe-bookmark"></i></span>{{ __('class_name.class_name') }}
     </a>
+    <a href="{{ route('students.index') }}" style="padding: 8px" class="list-group-item list-group-item-action d-flex align-items-center {{ Request::segment(2) == 'students' ? 'active' : '' }}">
+        <span class="icon mr-2"><i class="fe fe-bookmark"></i></span>{{ __('student.student') }}
+    </a>
 </div>

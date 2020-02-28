@@ -76,5 +76,12 @@ Route::middleware('auth')->group(function () {
             Route::get('backups/{fileName}/dl', 'BackupController@download')->name('backups.download');
             Route::resource('backups', 'BackupController', ['except' => ['create', 'show', 'edit']]);
         });
+
+        Route::group(['namespace' => 'Students'], function () {
+            /*
+             * Students Routes
+             */
+            Route::resource('students', 'StudentController');
+        });
     });
 });
