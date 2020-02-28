@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Students;
 
 use Illuminate\Http\Request;
 use App\Entities\Students\Student;
+use App\Entities\Classes\ClassName;
 use App\Http\Controllers\Controller;
 
 class StudentController extends Controller
@@ -31,7 +32,9 @@ class StudentController extends Controller
     {
         $this->authorize('create', new Student);
 
-        return view('students.create');
+        $classes = ClassName::orderBy('level_id')->orderBy('name')->get();
+
+        return view('students.create', compact('classes'));
     }
 
     /**
@@ -46,8 +49,8 @@ class StudentController extends Controller
 
         $newStudent = $request->validate([
             'class_id'      => 'required|exists:class_names,id',
-            'nis'           => 'required|max:60',
-            'nisn'          => 'nullable|max:60',
+            'nis'           => 'required|max:60|unique:students,nis',
+            'nisn'          => 'nullable|max:60|unique:students,nis,nisn',
             'name'          => 'required|max:60',
             'pob'           => 'nullable|max:60',
             'dob'           => 'nullable|date|date_format:Y-m-d',
@@ -109,8 +112,8 @@ class StudentController extends Controller
 
         $studentData = $request->validate([
             'class_id'      => 'required|exists:class_names,id',
-            'nis'           => 'required|max:60',
-            'nisn'          => 'nullable|max:60',
+            'nis'           => 'required|max:60|unique:students,nis,'.$student->id,
+            'nisn'          => 'nullable|max:60|unique:students,nisn,'.$student->id,
             'name'          => 'required|max:60',
             'pob'           => 'nullable|max:60',
             'dob'           => 'nullable|date|date_format:Y-m-d',

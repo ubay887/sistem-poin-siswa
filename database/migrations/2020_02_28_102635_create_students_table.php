@@ -17,8 +17,8 @@ class CreateStudentsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('login_id')->nullable();
             $table->unsignedBigInteger('class_id');
-            $table->string('nis', 60);
-            $table->string('nisn', 60)->nullable();
+            $table->string('nis', 60)->unique();
+            $table->string('nisn', 60)->nullable()->unique();
             $table->string('name', 60);
             $table->string('pob', 60)->nullable();
             $table->date('dob')->nullable();
