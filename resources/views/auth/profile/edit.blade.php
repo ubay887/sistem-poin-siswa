@@ -12,7 +12,7 @@
                     @csrf @method('patch')
                     <div class="form-group">
                         <label for="name" class="form-label">{{ __('user.name') }} <span class="form-required">*</span></label>
-                        <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name', $user->name) }}" required>
+                        <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name', $user->name) }}" readonly required>
                         {!! $errors->first('name', '<span class="invalid-feedback small">:message</span>') !!}
                     </div>
                     <div class="form-group">
