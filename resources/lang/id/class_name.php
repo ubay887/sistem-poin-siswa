@@ -28,6 +28,7 @@ return [
     'undeleteable'   => 'Data Kelas tidak dapat dihapus.',
 
     // Attributes
+    'level_id'    => 'Tingkat',
     'name'        => 'Nama Kelas',
     'description' => 'Deskripsi',
 ];

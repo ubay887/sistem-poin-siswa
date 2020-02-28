@@ -3,7 +3,7 @@
     <form method="POST" action="{{ route('class_names.store') }}" accept-charset="UTF-8">
         {{ csrf_field() }}
         <div class="form-group">
-            <label for="level_id" class="form-label">{{ __('class_level_id.level_id') }} <span class="form-required">*</span></label>
+            <label for="level_id" class="form-label">{{ __('class_name.level_id') }} <span class="form-required">*</span></label>
             <input id="level_id" type="text" class="form-control{{ $errors->has('level_id') ? ' is-invalid' : '' }}" name="level_id" value="{{ old('level_id') }}" required>
             {!! $errors->first('level_id', '<span class="invalid-feedback" role="alert">:message</span>') !!}
         </div>
