@@ -56,6 +56,8 @@
     <div class="card">
         <div class="card-header">{{ __('class_name.delete') }}</div>
         <div class="card-body">
+            <label class="form-label text-primary">{{ __('class_name.level_id') }}</label>
+            <p>{{ $editableClassName->level_id }}</p>
             <label class="form-label text-primary">{{ __('class_name.name') }}</label>
             <p>{{ $editableClassName->name }}</p>
             <label class="form-label text-primary">{{ __('class_name.description') }}</label>
