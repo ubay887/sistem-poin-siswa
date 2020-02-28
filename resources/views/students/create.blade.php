@@ -164,3 +164,20 @@
     </div>
 </form>
 @endsection
+
+@section('styles')
+    <link href="{{ asset('css/plugins/jquery.datetimepicker.css') }}" rel="stylesheet">
+@endsection
+
+@push('scripts')
+    <script src="{{ asset('js/plugins/jquery.datetimepicker.js') }}"></script>
+    <script>
+    (function() {
+        $('#dob').datetimepicker({
+            timepicker:false,
+            format:'Y-m-d',
+            closeOnDateSelect: true
+        });
+    })();
+    </script>
+@endpush
