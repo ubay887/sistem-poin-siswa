@@ -38,63 +38,52 @@
                                 <input id="pob" type="text" class="form-control{{ $errors->has('pob') ? ' is-invalid' : '' }}" name="pob" value="{{ old('pob') }}">
                                 {!! $errors->first('pob', '<span class="invalid-feedback" role="alert">:message</span>') !!}
                             </div>
-                        </div>
-                        <div class="col-md-6">
                             <div class="form-group">
                                 <label for="dob" class="form-label">{{ __('student.dob') }}</label>
                                 <input id="dob" type="text" class="form-control{{ $errors->has('dob') ? ' is-invalid' : '' }}" name="dob" value="{{ old('dob') }}">
                                 {!! $errors->first('dob', '<span class="invalid-feedback" role="alert">:message</span>') !!}
                             </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
                             <div class="form-group">
                                 <label for="class_id" class="form-label">{{ __('student.class_id') }} <span class="form-required">*</span></label>
                                 <select name="class_id" id="class_id" class="form-control" required>
                                     <option value="">-- {{ __('class_name.list') }} --</option>
                                     @foreach ($classes as $key => $class)
-                                        <option value="{{ $class->id }}">{{ $class->level.' '.$class->name }}</option>
+                                        <option value="{{ $class->id }}" {{ old('class_id') == $class->id ? 'selected' : '' }}>{{ $class->level.' '.$class->name }}</option>
                                     @endforeach
                                 </select>
                                 {!! $errors->first('class_id', '<span class="invalid-feedback" role="alert">:message</span>') !!}
                             </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="gender_id" class="form-label">{{ __('app.gender_id') }}  <span class="form-required">*</span></label>
-                                <div class="form-group">
-                                @foreach (App\Entities\References\Gender::$lists as $genderId => $genderType)
-                                    <input type="radio" value="{{ $genderId }}" {{ 1 === $genderId ? 'checked' : '' }} id="gender_{{ $genderId }}" name="gender_id" >
-                                    <label for="gender_{{ $genderId }}">{{ __('app.'.$genderType) }}</label><br>
-                                @endforeach
-                                </div>
-                                {!! $errors->first('gender_id', '<span class="invalid-feedback" role="alert">:message</span>') !!}
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="religion_id" class="form-label">{{ __('student.religion_id') }} <span class="form-required">*</span></label>
-                                <input id="religion_id" type="text" class="form-control{{ $errors->has('religion_id') ? ' is-invalid' : '' }}" name="religion_id" value="{{ old('religion_id') }}" required>
-                                {!! $errors->first('religion_id', '<span class="invalid-feedback" role="alert">:message</span>') !!}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
                             <div class="form-group">
                                 <label for="phone" class="form-label">{{ __('student.phone') }}</label>
                                 <input id="phone" type="text" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ old('phone') }}">
                                 {!! $errors->first('phone', '<span class="invalid-feedback" role="alert">:message</span>') !!}
                             </div>
-                        </div>
-                        <div class="col-md-6">
                             <div class="form-group">
                                 <label for="email" class="form-label">{{ __('student.email') }}</label>
                                 <input id="email" type="text" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}">
                                 {!! $errors->first('email', '<span class="invalid-feedback" role="alert">:message</span>') !!}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="gender_id" class="form-label">{{ __('app.gender_id') }}  <span class="form-required">*</span></label>
+                                <div class="form-group">
+                                @foreach (App\Entities\References\Gender::$lists as $genderId => $genderType)
+                                    <input type="radio" value="{{ $genderId }}" {{ old('gender_id', 1) == $genderId ? 'checked' : '' }} id="gender_{{ $genderId }}" name="gender_id" >
+                                    <label for="gender_{{ $genderId }}">{{ __('app.'.$genderType) }}</label><br>
+                                @endforeach
+                                </div>
+                                {!! $errors->first('gender_id', '<span class="invalid-feedback" role="alert">:message</span>') !!}
+                            </div>
+                            <div class="form-group">
+                                <label for="religion_id" class="form-label">{{ __('app.religion_id') }}  <span class="form-required">*</span></label>
+                                <div class="form-group">
+                                @foreach (App\Entities\References\Religion::$lists as $religionId => $religionType)
+                                    <input type="radio" value="{{ $religionId }}" {{ old('religion_id', 1) == $religionId ? 'checked' : '' }} id="religion_{{ $religionId }}" name="religion_id" >
+                                    <label for="religion_{{ $religionId }}">{{ __('app.'.$religionType) }}</label><br>
+                                @endforeach
+                                </div>
+                                {!! $errors->first('religion_id', '<span class="invalid-feedback" role="alert">:message</span>') !!}
                             </div>
                         </div>
                     </div>

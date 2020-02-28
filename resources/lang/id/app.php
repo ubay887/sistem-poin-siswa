@@ -12,6 +12,16 @@ return [
     'male'      => 'Laki-laki',
     'female'    => 'Perempuan',
 
+    // Religion
+    'religion_id' => 'Agama',
+    'islam'       => 'Islam',
+    'protestan'   => 'Kristen Protestan',
+    'katolik'     => 'Kristen Katolik',
+    'hindu'       => 'Hindu',
+    'budha'       => 'Buddha',
+    'khonghucu'   => 'Khonghucu',
+    'other'       => 'Lainnya',
+
     // Actions
     'show'                  => 'Lihat Detail',
     'edit'                  => 'Edit',
