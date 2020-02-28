@@ -16,6 +16,8 @@ return [
 
     // Actions
     'create'         => 'Input Siswa Baru',
+    'create_student' => 'Data Siswa',
+    'create_parent'  => 'Data Orang Tua / Wali Siswa',
     'created'        => 'Input Siswa baru telah berhasil.',
     'show'           => 'Lihat Detail Siswa',
     'edit'           => 'Edit Siswa',
@@ -28,6 +30,22 @@ return [
     'undeleteable'   => 'Data Siswa tidak dapat dihapus.',
 
     // Attributes
-    'name'        => 'Nama Siswa',
-    'description' => 'Deskripsi Siswa',
+    'class_id'      => 'Kelas',
+    'nis'           => 'NIS',
+    'nisn'          => 'NISN',
+    'name'          => 'Nama Siswa',
+    'pob'           => 'Tempat Lahir',
+    'dob'           => 'Tgl. Lahir',
+    'gender_id'     => 'Jenis Kelamin',
+    'religion_id'   => 'Agama',
+    'phone'         => 'Telepon',
+    'email'         => 'Email',
+    'address'       => 'Alamat',
+    'father_name'   => 'Nama Ayah',
+    'father_phone'  => 'Telp. Ayah',
+    'mother_name'   => 'Nama Ibu',
+    'mother_phone'  => 'Telp. Ibu',
+    'wali_name'     => 'Nama Wali',
+    'wali_relation' => 'Hubungan',
+    'wali_phone'    => 'Telp. Wali',
 ];
