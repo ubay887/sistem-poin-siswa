@@ -104,8 +104,23 @@ class ManageStudentTest extends TestCase
     private function getEditFields(array $overrides = [])
     {
         return array_merge([
-            'name'        => 'Student 1 name',
-            'description' => 'Student 1 description',
+            'nis'           => '123456',
+            'nisn'          => '5678987655667',
+            'name'          => 'Akhmad Herdian',
+            'pob'           => 'Pelaihari',
+            'dob'           => '1989-09-09',
+            'gender_id'     => 1,
+            'religion_id'   => 1,
+            'phone'         => '085752669087',
+            'email'         => 'herdian@example.net',
+            'address'       => 'Jl. Martapura Lama Rt.6 Kec. Sungai Lulut Kab. Banjar',
+            'father_name'   => 'Murjani',
+            'father_phone'  => '098787656765',
+            'mother_name'   => 'Nurjannah',
+            'mother_phone'  => '098787656766',
+            'wali_name'     => 'Zarkani',
+            'wali_relation' => 'Paman',
+            'wali_phone'    => '098787656788',
         ], $overrides);
     }
 
@@ -113,7 +128,12 @@ class ManageStudentTest extends TestCase
     public function user_can_edit_a_student()
     {
         $this->loginAsAdmin();
-        $student = factory(Student::class)->create(['name' => 'Testing 123']);
+
+        $className = $user = factory(ClassName::class)->create();
+        $student = factory(Student::class)->create([
+            'class_id' => $className->id,
+            'name'     => 'Testing 123',
+        ]);
 
         $this->visitRoute('students.show', $student);
         $this->click('edit-student-'.$student->id);
