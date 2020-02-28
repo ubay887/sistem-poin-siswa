@@ -51,7 +51,12 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="class_id" class="form-label">{{ __('student.class_id') }} <span class="form-required">*</span></label>
-                                <input id="class_id" type="text" class="form-control{{ $errors->has('class_id') ? ' is-invalid' : '' }}" name="class_id" value="{{ old('class_id') }}" required>
+                                <select name="class_id" id="class_id" class="form-control" required>
+                                    <option value="">-- {{ __('class_name.list') }} --</option>
+                                    @foreach ($classes as $key => $class)
+                                        <option value="{{ $class->id }}">{{ $class->level.' '.$class->name }}</option>
+                                    @endforeach
+                                </select>
                                 {!! $errors->first('class_id', '<span class="invalid-feedback" role="alert">:message</span>') !!}
                             </div>
                         </div>
