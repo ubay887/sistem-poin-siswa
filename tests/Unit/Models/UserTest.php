@@ -25,4 +25,17 @@ class UserTest extends TestCase
 
         $this->assertEquals($link, $user->name_link);
     }
+
+    /** @test */
+    public function a_user_has_role_attribute()
+    {
+        $user = factory(User::class)->make(['role_id' => 1]);
+        $this->assertEquals(__('user.admin'), $user->role);
+
+        $user->role_id = 2;
+        $this->assertEquals(__('user.teacher'), $user->role);
+
+        $user->role_id = 3;
+        $this->assertEquals(__('user.student'), $user->role);
+    }
 }
