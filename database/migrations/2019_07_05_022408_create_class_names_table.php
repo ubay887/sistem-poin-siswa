@@ -15,6 +15,7 @@ class CreateClassNamesTable extends Migration
     {
         Schema::create('class_names', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedTinyInteger('level_id');
             $table->string('name', 60);
             $table->string('description')->nullable();
             $table->unsignedBigInteger('creator_id');

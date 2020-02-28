@@ -30,14 +30,16 @@ class ManageClassNameTest extends TestCase
         $this->seeRouteIs('class_names.index', ['action' => 'create']);
 
         $this->submitForm(__('class_name.create'), [
-            'name'        => 'ClassName 1 name',
+            'level_id'    => 11,
+            'name'        => 'IPA 2',
             'description' => 'ClassName 1 description',
         ]);
 
         $this->seeRouteIs('class_names.index');
 
         $this->seeInDatabase('class_names', [
-            'name'        => 'ClassName 1 name',
+            'level_id'    => 11,
+            'name'        => 'IPA 2',
             'description' => 'ClassName 1 description',
         ]);
     }

@@ -38,6 +38,7 @@ class ClassNameController extends Controller
         $this->authorize('create', new ClassName);
 
         $newClassName = $request->validate([
+            'level_id'    => 'required|numeric|min:0',
             'name'        => 'required|max:60',
             'description' => 'nullable|max:255',
         ]);
