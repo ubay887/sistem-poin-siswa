@@ -96,7 +96,9 @@ class StudentController extends Controller
     {
         $this->authorize('update', $student);
 
-        return view('students.edit', compact('student'));
+        $classes = ClassName::orderBy('level_id')->orderBy('name')->get();
+
+        return view('students.edit', compact('student', 'classes'));
     }
 
     /**
