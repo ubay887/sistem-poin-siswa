@@ -10,10 +10,14 @@
             <div class="card">
                 <div class="card-header">{{ __('student.delete') }}</div>
                 <div class="card-body">
+                    <label class="form-label text-primary">{{ __('student.nis') }}</label>
+                    <p>{{ $student->nis }}</p>
                     <label class="form-label text-primary">{{ __('student.name') }}</label>
                     <p>{{ $student->name }}</p>
-                    <label class="form-label text-primary">{{ __('student.description') }}</label>
-                    <p>{{ $student->description }}</p>
+                    <label class="form-label text-primary">{{ __('student.pob').' / '.__('student.dob')}}</label>
+                    <p>{{ $student->pob.' / '.$student->dob }}</p>
+                    <label class="form-label text-primary">{{ __('student.gender_id') }}</label>
+                    <p>{{ $student->gender }}</p>
                     {!! $errors->first('student_id', '<span class="invalid-feedback" role="alert">:message</span>') !!}
                 </div>
                 <hr style="margin:0">
