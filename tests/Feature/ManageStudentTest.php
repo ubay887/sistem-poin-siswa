@@ -90,15 +90,15 @@ class ManageStudentTest extends TestCase
     }
 
     /** @test */
-    public function validate_student_description_is_not_more_than_255_characters()
+    public function validate_student_address_is_not_more_than_255_characters()
     {
         $this->loginAsAdmin();
 
-        // description 256 characters
+        // address 256 characters
         $this->post(route('students.store'), $this->getCreateFields([
-            'description' => str_repeat('Long description', 16),
+            'address' => str_repeat('Long address', 50),
         ]));
-        $this->assertSessionHasErrors('description');
+        $this->assertSessionHasErrors('address');
     }
 
     private function getEditFields(array $overrides = [])
@@ -173,16 +173,16 @@ class ManageStudentTest extends TestCase
     }
 
     /** @test */
-    public function validate_student_description_update_is_not_more_than_255_characters()
+    public function validate_student_address_update_is_not_more_than_255_characters()
     {
         $this->loginAsAdmin();
         $student = factory(Student::class)->create(['name' => 'Testing 123']);
 
-        // description 256 characters
+        // address 256 characters
         $this->patch(route('students.update', $student), $this->getEditFields([
-            'description' => str_repeat('Long description', 16),
+            'address' => str_repeat('Long address', 50),
         ]));
-        $this->assertSessionHasErrors('description');
+        $this->assertSessionHasErrors('address');
     }
 
     /** @test */
