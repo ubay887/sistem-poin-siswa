@@ -14,7 +14,7 @@ class ManageOptionTest extends TestCase
     /** @test */
     public function admin_can_visit_option_page()
     {
-        $this->loginAsUser();
+        $this->loginAsAdmin();
         $this->visit(route('options.page'));
         $this->seePageIs(route('options.page'));
     }
@@ -22,7 +22,7 @@ class ManageOptionTest extends TestCase
     /** @test */
     public function admin_can_save_option_data()
     {
-        $this->loginAsUser();
+        $this->loginAsAdmin();
         $this->visit(route('options.page'));
 
         $this->submitForm(__('option.update'), [
@@ -83,7 +83,7 @@ class ManageOptionTest extends TestCase
     /** @test */
     public function user_can_upload_a_company_logo()
     {
-        $this->loginAsUser();
+        $this->loginAsAdmin();
 
         $storage = config('filesystems.default');
         Storage::fake($storage);

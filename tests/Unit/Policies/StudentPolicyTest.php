@@ -2,9 +2,9 @@
 
 namespace Tests\Unit\Policies;
 
+use Tests\TestCase;
 use App\Entities\Students\Student;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
 
 class StudentPolicyTest extends TestCase
 {
@@ -13,31 +13,31 @@ class StudentPolicyTest extends TestCase
     /** @test */
     public function user_can_create_student()
     {
-        $user = $this->createUser();
-        $this->assertTrue($user->can('create', new Student));
+        $admin = $this->createUser('admin');
+        $this->assertTrue($admin->can('create', new Student));
     }
 
     /** @test */
     public function user_can_view_student()
     {
-        $user = $this->createUser();
+        $admin = $this->createUser('admin');
         $student = factory(Student::class)->create();
-        $this->assertTrue($user->can('view', $student));
+        $this->assertTrue($admin->can('view', $student));
     }
 
     /** @test */
     public function user_can_update_student()
     {
-        $user = $this->createUser();
+        $admin = $this->createUser('admin');
         $student = factory(Student::class)->create();
-        $this->assertTrue($user->can('update', $student));
+        $this->assertTrue($admin->can('update', $student));
     }
 
     /** @test */
     public function user_can_delete_student()
     {
-        $user = $this->createUser();
+        $admin = $this->createUser('admin');
         $student = factory(Student::class)->create();
-        $this->assertTrue($user->can('delete', $student));
+        $this->assertTrue($admin->can('delete', $student));
     }
 }

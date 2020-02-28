@@ -15,7 +15,7 @@ class ManageClassNameTest extends TestCase
     {
         $className = factory(ClassName::class)->create();
 
-        $this->loginAsUser();
+        $this->loginAsAdmin();
         $this->visitRoute('class_names.index');
         $this->see($className->name);
     }
@@ -23,7 +23,7 @@ class ManageClassNameTest extends TestCase
     /** @test */
     public function user_can_create_a_class_name()
     {
-        $this->loginAsUser();
+        $this->loginAsAdmin();
         $this->visitRoute('class_names.index');
 
         $this->click(__('class_name.create'));
@@ -48,7 +48,7 @@ class ManageClassNameTest extends TestCase
     /** @test */
     public function validate_class_name_name_is_required()
     {
-        $this->loginAsUser();
+        $this->loginAsAdmin();
 
         // name empty
         $this->post(route('class_names.store'), $this->getCreateFields(['name' => '']));
@@ -58,7 +58,7 @@ class ManageClassNameTest extends TestCase
     /** @test */
     public function validate_class_name_name_is_not_more_than_60_characters()
     {
-        $this->loginAsUser();
+        $this->loginAsAdmin();
 
         // name 70 characters
         $this->post(route('class_names.store'), $this->getCreateFields([
@@ -70,7 +70,7 @@ class ManageClassNameTest extends TestCase
     /** @test */
     public function validate_class_name_description_is_not_more_than_255_characters()
     {
-        $this->loginAsUser();
+        $this->loginAsAdmin();
 
         // description 256 characters
         $this->post(route('class_names.store'), $this->getCreateFields([
@@ -82,7 +82,7 @@ class ManageClassNameTest extends TestCase
     /** @test */
     public function user_can_edit_a_class_name_within_search_query()
     {
-        $this->loginAsUser();
+        $this->loginAsAdmin();
         $className = factory(ClassName::class)->create(['name' => 'Testing 123']);
 
         $this->visitRoute('class_names.index', ['q' => '123']);
@@ -108,7 +108,7 @@ class ManageClassNameTest extends TestCase
     /** @test */
     public function validate_class_name_name_update_is_required()
     {
-        $this->loginAsUser();
+        $this->loginAsAdmin();
         $class_name = factory(ClassName::class)->create(['name' => 'Testing 123']);
 
         // name empty
@@ -119,7 +119,7 @@ class ManageClassNameTest extends TestCase
     /** @test */
     public function validate_class_name_name_update_is_not_more_than_60_characters()
     {
-        $this->loginAsUser();
+        $this->loginAsAdmin();
         $class_name = factory(ClassName::class)->create(['name' => 'Testing 123']);
 
         // name 70 characters
@@ -132,7 +132,7 @@ class ManageClassNameTest extends TestCase
     /** @test */
     public function validate_class_name_description_update_is_not_more_than_255_characters()
     {
-        $this->loginAsUser();
+        $this->loginAsAdmin();
         $class_name = factory(ClassName::class)->create(['name' => 'Testing 123']);
 
         // description 256 characters
@@ -145,7 +145,7 @@ class ManageClassNameTest extends TestCase
     /** @test */
     public function user_can_delete_a_class_name()
     {
-        $this->loginAsUser();
+        $this->loginAsAdmin();
         $className = factory(ClassName::class)->create();
         factory(ClassName::class)->create();
 

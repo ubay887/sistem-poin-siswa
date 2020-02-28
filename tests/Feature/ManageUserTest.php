@@ -15,7 +15,7 @@ class ManageUserTest extends TestCase
     {
         $user = factory(User::class)->create();
 
-        $this->loginAsUser();
+        $this->loginAsAdmin();
         $this->visitRoute('users.index');
         $this->see($user->name);
     }
@@ -32,7 +32,7 @@ class ManageUserTest extends TestCase
     /** @test */
     public function user_can_create_a_user()
     {
-        $this->loginAsUser();
+        $this->loginAsAdmin();
         $this->visitRoute('users.index');
 
         $this->click(__('user.create'));
@@ -49,7 +49,7 @@ class ManageUserTest extends TestCase
     /** @test */
     public function validate_user_name_is_required()
     {
-        $this->loginAsUser();
+        $this->loginAsAdmin();
 
         // name empty
         $this->post(route('users.store'), $this->getCreateFields(['name' => '']));
@@ -59,7 +59,7 @@ class ManageUserTest extends TestCase
     /** @test */
     public function validate_user_name_is_not_more_than_60_characters()
     {
-        $this->loginAsUser();
+        $this->loginAsAdmin();
 
         // name 70 characters
         $this->post(route('users.store'), $this->getCreateFields([
@@ -80,7 +80,7 @@ class ManageUserTest extends TestCase
     /** @test */
     public function user_can_edit_a_user()
     {
-        $this->loginAsUser();
+        $this->loginAsAdmin();
         $user = factory(User::class)->create(['name' => 'Testing 123']);
 
         $this->visitRoute('users.show', $user);
@@ -100,7 +100,7 @@ class ManageUserTest extends TestCase
     /** @test */
     public function validate_user_name_update_is_required()
     {
-        $this->loginAsUser();
+        $this->loginAsAdmin();
         $user = factory(User::class)->create(['name' => 'Testing 123']);
 
         // name empty
@@ -111,7 +111,7 @@ class ManageUserTest extends TestCase
     /** @test */
     public function validate_user_name_update_is_not_more_than_60_characters()
     {
-        $this->loginAsUser();
+        $this->loginAsAdmin();
         $user = factory(User::class)->create(['name' => 'Testing 123']);
 
         // name 70 characters
@@ -124,7 +124,7 @@ class ManageUserTest extends TestCase
     /** @test */
     public function user_can_delete_a_user()
     {
-        $this->loginAsUser();
+        $this->loginAsAdmin();
         $user = factory(User::class)->create();
         factory(User::class)->create();
 
@@ -142,7 +142,7 @@ class ManageUserTest extends TestCase
     /** @test */
     public function admin_can_suspend_a_user()
     {
-        $this->loginAsUser();
+        $this->loginAsAdmin();
         $user = factory(User::class)->create(['role_id' => 2]);
 
         $this->visit(route('users.show', $user));
@@ -165,7 +165,7 @@ class ManageUserTest extends TestCase
     /** @test */
     public function admin_can_activate_a_suspended_user()
     {
-        $this->loginAsUser();
+        $this->loginAsAdmin();
         $user = factory(User::class)->create([
             'role_id'   => 2,
             'is_active' => 0,

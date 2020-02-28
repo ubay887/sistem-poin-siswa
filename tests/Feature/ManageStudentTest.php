@@ -2,8 +2,8 @@
 
 namespace Tests\Feature;
 
-use App\Entities\Students\Student;
 use Tests\TestCase;
+use App\Entities\Students\Student;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ManageStudentTest extends TestCase
@@ -15,7 +15,7 @@ class ManageStudentTest extends TestCase
     {
         $student = factory(Student::class)->create();
 
-        $this->loginAsUser();
+        $this->loginAsAdmin();
         $this->visitRoute('students.index');
         $this->see($student->name);
     }
@@ -31,7 +31,7 @@ class ManageStudentTest extends TestCase
     /** @test */
     public function user_can_create_a_student()
     {
-        $this->loginAsUser();
+        $this->loginAsAdmin();
         $this->visitRoute('students.index');
 
         $this->click(__('student.create'));
@@ -47,7 +47,7 @@ class ManageStudentTest extends TestCase
     /** @test */
     public function validate_student_name_is_required()
     {
-        $this->loginAsUser();
+        $this->loginAsAdmin();
 
         // name empty
         $this->post(route('students.store'), $this->getCreateFields(['name' => '']));
@@ -57,7 +57,7 @@ class ManageStudentTest extends TestCase
     /** @test */
     public function validate_student_name_is_not_more_than_60_characters()
     {
-        $this->loginAsUser();
+        $this->loginAsAdmin();
 
         // name 70 characters
         $this->post(route('students.store'), $this->getCreateFields([
@@ -69,7 +69,7 @@ class ManageStudentTest extends TestCase
     /** @test */
     public function validate_student_description_is_not_more_than_255_characters()
     {
-        $this->loginAsUser();
+        $this->loginAsAdmin();
 
         // description 256 characters
         $this->post(route('students.store'), $this->getCreateFields([
@@ -89,7 +89,7 @@ class ManageStudentTest extends TestCase
     /** @test */
     public function user_can_edit_a_student()
     {
-        $this->loginAsUser();
+        $this->loginAsAdmin();
         $student = factory(Student::class)->create(['name' => 'Testing 123']);
 
         $this->visitRoute('students.show', $student);
@@ -108,7 +108,7 @@ class ManageStudentTest extends TestCase
     /** @test */
     public function validate_student_name_update_is_required()
     {
-        $this->loginAsUser();
+        $this->loginAsAdmin();
         $student = factory(Student::class)->create(['name' => 'Testing 123']);
 
         // name empty
@@ -119,7 +119,7 @@ class ManageStudentTest extends TestCase
     /** @test */
     public function validate_student_name_update_is_not_more_than_60_characters()
     {
-        $this->loginAsUser();
+        $this->loginAsAdmin();
         $student = factory(Student::class)->create(['name' => 'Testing 123']);
 
         // name 70 characters
@@ -132,7 +132,7 @@ class ManageStudentTest extends TestCase
     /** @test */
     public function validate_student_description_update_is_not_more_than_255_characters()
     {
-        $this->loginAsUser();
+        $this->loginAsAdmin();
         $student = factory(Student::class)->create(['name' => 'Testing 123']);
 
         // description 256 characters
@@ -145,7 +145,7 @@ class ManageStudentTest extends TestCase
     /** @test */
     public function user_can_delete_a_student()
     {
-        $this->loginAsUser();
+        $this->loginAsAdmin();
         $student = factory(Student::class)->create();
         factory(Student::class)->create();
 

@@ -13,31 +13,31 @@ class UserPolicyTest extends TestCase
     /** @test */
     public function user_can_create_user()
     {
-        $user = $this->createUser();
-        $this->assertTrue($user->can('create', new User));
+        $admin = $this->createUser('admin');
+        $this->assertTrue($admin->can('create', new User));
     }
 
     /** @test */
     public function user_can_view_user()
     {
-        $user = $this->createUser();
+        $admin = $this->createUser('admin');
         $user = factory(User::class)->create();
-        $this->assertTrue($user->can('view', $user));
+        $this->assertTrue($admin->can('view', $user));
     }
 
     /** @test */
     public function user_can_update_user()
     {
-        $user = $this->createUser();
+        $admin = $this->createUser('admin');
         $user = factory(User::class)->create();
-        $this->assertTrue($user->can('update', $user));
+        $this->assertTrue($admin->can('update', $user));
     }
 
     /** @test */
     public function user_can_delete_user()
     {
-        $user = $this->createUser();
+        $admin = $this->createUser('admin');
         $user = factory(User::class)->create();
-        $this->assertTrue($user->can('delete', $user));
+        $this->assertTrue($admin->can('delete', $user));
     }
 }
