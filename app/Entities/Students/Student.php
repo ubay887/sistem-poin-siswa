@@ -3,6 +3,8 @@
 namespace App\Entities\Students;
 
 use App\Entities\Users\User;
+use App\Entities\References\Gender;
+use App\Entities\References\Religion;
 use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
@@ -33,5 +35,19 @@ class Student extends Model
     public function creator()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function getGenderAttribute()
+    {
+        $genderTypes = Gender::$lists;
+
+        return __('app.'.$genderTypes[$this->gender_id]);
+    }
+
+    public function getReligionAttribute()
+    {
+        $religionTypes = Religion::$lists;
+
+        return __('app.'.$religionTypes[$this->religion_id]);
     }
 }
