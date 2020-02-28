@@ -29,25 +29,18 @@ class ManageClassNameTest extends TestCase
         $this->click(__('class_name.create'));
         $this->seeRouteIs('class_names.index', ['action' => 'create']);
 
-        $this->submitForm(__('class_name.create'), [
-            'level_id'    => 11,
-            'name'        => 'IPA 2',
-            'description' => 'ClassName 1 description',
-        ]);
+        $this->submitForm(__('class_name.create'), $this->getCreateFields());
 
         $this->seeRouteIs('class_names.index');
 
-        $this->seeInDatabase('class_names', [
-            'level_id'    => 11,
-            'name'        => 'IPA 2',
-            'description' => 'ClassName 1 description',
-        ]);
+        $this->seeInDatabase('class_names', $this->getCreateFields());
     }
 
     private function getCreateFields(array $overrides = [])
     {
         return array_merge([
-            'name'        => 'ClassName 1 name',
+            'level_id'    => 11,
+            'name'        => 'IPA 2',
             'description' => 'ClassName 1 description',
         ], $overrides);
     }
