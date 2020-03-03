@@ -50,4 +50,9 @@ class Student extends Model
 
         return __('app.'.$religionTypes[$this->religion_id]);
     }
+
+    public function login()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

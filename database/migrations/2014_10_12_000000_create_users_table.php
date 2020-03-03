@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('username')->unique();
-            $table->string('email')->unique();
+            $table->string('email')->unique()->nullable();
             $table->unsignedTinyInteger('role_id'); // 1:administrator, 2:teacher, 3:student
             $table->boolean('is_active')->default(1); // 1:active, 0:suspended
             $table->timestamp('email_verified_at')->nullable();

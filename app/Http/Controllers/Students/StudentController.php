@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Students;
 
+use App\Entities\Users\User;
 use Illuminate\Http\Request;
 use App\Entities\Students\Student;
+use Illuminate\Support\Facades\DB;
 use App\Entities\Classes\ClassName;
 use App\Http\Controllers\Controller;
 
@@ -70,7 +72,22 @@ class StudentController extends Controller
         $newStudent['is_active'] = 1;
         $newStudent['creator_id'] = auth()->id();
 
+        DB::beginTransaction();
+
+        $user = User::create([
+            'name'      => strtoupper($newStudent['name']),
+            'username'  => $newStudent['nis'],
+            'email'     => $newStudent['email'],
+            'role_id'   => 3,
+            'is_active' => 1,
+            'password'  => bcrypt(str_replace('-', '', $newStudent['dob'])),
+        ]);
+
+        $newStudent['login_id'] = $user->id;
+
         $student = Student::create($newStudent);
+
+        DB::commit();
 
         return redirect()->route('students.show', $student);
     }
@@ -132,7 +149,19 @@ class StudentController extends Controller
             'wali_relation' => 'nullable|max:60',
             'wali_phone'    => 'nullable|max:14',
         ]);
+
+        DB::beginTransaction();
+
+        $student->login->update([
+            'name'     => strtoupper($studentData['name']),
+            'username' => $studentData['nis'],
+            'email'    => $studentData['email'],
+            'password' => bcrypt(str_replace('-', '', $studentData['dob'])),
+        ]);
+
         $student->update($studentData);
+
+        DB::commit();
 
         return redirect()->route('students.show', $student);
     }

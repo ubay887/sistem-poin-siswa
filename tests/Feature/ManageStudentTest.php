@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use Tests\TestCase;
+use App\Entities\Users\User;
 use App\Entities\Students\Student;
 use App\Entities\Classes\ClassName;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -65,6 +66,14 @@ class ManageStudentTest extends TestCase
         $this->seeInDatabase('students', $this->getCreateFields([
             'class_id' => $className->id,
         ]));
+
+        $this->seeInDatabase('users', [
+            'name'      => 'AKHMAD HERDIAN',
+            'username'  => '123456',
+            'email'     => 'herdian@example.net',
+            'role_id'   => 3,
+            'is_active' => 1,
+        ]);
     }
 
     /** @test */
@@ -104,15 +113,15 @@ class ManageStudentTest extends TestCase
     private function getEditFields(array $overrides = [])
     {
         return array_merge([
-            'nis'           => '123456',
+            'nis'           => '123458',
             'nisn'          => '5678987655667',
-            'name'          => 'Akhmad Herdian',
+            'name'          => 'Heri Setiawan',
             'pob'           => 'Pelaihari',
             'dob'           => '1989-09-09',
             'gender_id'     => 1,
             'religion_id'   => 1,
             'phone'         => '085752669087',
-            'email'         => 'herdian@example.net',
+            'email'         => 'heri@example.net',
             'address'       => 'Jl. Martapura Lama Rt.6 Kec. Sungai Lulut Kab. Banjar',
             'father_name'   => 'Murjani',
             'father_phone'  => '098787656765',
@@ -129,11 +138,13 @@ class ManageStudentTest extends TestCase
     {
         $this->loginAsAdmin();
 
-        $className = $user = factory(ClassName::class)->create();
+        $className = factory(ClassName::class)->create();
         $student = factory(Student::class)->create([
             'class_id' => $className->id,
             'name'     => 'Testing 123',
         ]);
+        $user = factory(User::class)->create();
+        $student->update(['login_id' => $user->id]);
 
         $this->visitRoute('students.show', $student);
         $this->click('edit-student-'.$student->id);
@@ -146,6 +157,12 @@ class ManageStudentTest extends TestCase
         $this->seeInDatabase('students', $this->getEditFields([
             'id' => $student->id,
         ]));
+
+        $this->seeInDatabase('users', [
+            'name'     => 'HERI SETIAWAN',
+            'username' => '123458',
+            'email'    => 'heri@example.net',
+        ]);
     }
 
     /** @test */

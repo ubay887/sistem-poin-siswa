@@ -70,4 +70,14 @@ class StudentTest extends TestCase
         $student->religion_id = 99;
         $this->assertEquals(__('app.other'), $student->religion);
     }
+
+    /** @test */
+    public function a_student_has_belongs_to_login_relation()
+    {
+        $student = factory(Student::class)->create(['login_id' => 1]);
+        $user = factory(Student::class)->create(['name' => $student->name]);
+
+        $this->assertInstanceOf(User::class, $student->login);
+        $this->assertEquals($student->login_id, $student->login->id);
+    }
 }
