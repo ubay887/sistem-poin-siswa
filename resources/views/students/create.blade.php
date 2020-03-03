@@ -34,13 +34,13 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="pob" class="form-label">{{ __('student.pob') }}</label>
-                                <input id="pob" type="text" class="form-control{{ $errors->has('pob') ? ' is-invalid' : '' }}" name="pob" value="{{ old('pob') }}">
+                                <label for="pob" class="form-label">{{ __('student.pob') }} <span class="form-required">*</span></label>
+                                <input id="pob" type="text" class="form-control{{ $errors->has('pob') ? ' is-invalid' : '' }}" name="pob" value="{{ old('pob') }}" required>
                                 {!! $errors->first('pob', '<span class="invalid-feedback" role="alert">:message</span>') !!}
                             </div>
                             <div class="form-group">
-                                <label for="dob" class="form-label">{{ __('student.dob') }}</label>
-                                <input id="dob" type="text" class="form-control{{ $errors->has('dob') ? ' is-invalid' : '' }}" name="dob" value="{{ old('dob') }}">
+                                <label for="dob" class="form-label">{{ __('student.dob') }} <span class="form-required">*</span></label>
+                                <input id="dob" type="text" class="form-control{{ $errors->has('dob') ? ' is-invalid' : '' }}" name="dob" value="{{ old('dob') }}" required>
                                 {!! $errors->first('dob', '<span class="invalid-feedback" role="alert">:message</span>') !!}
                             </div>
                             <div class="form-group">

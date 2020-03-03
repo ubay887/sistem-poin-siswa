@@ -13,6 +13,8 @@ $factory->define(Student::class, function (Faker $faker) {
         },
         'nis'         => $faker->word,
         'name'        => $faker->word,
+        'pob'         => 'Kurau',
+        'dob'         => '1989-09-09',
         'gender_id'   => 1,
         'religion_id' => 1,
         'address'     => $faker->sentence,

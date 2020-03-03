@@ -20,8 +20,8 @@ class CreateStudentsTable extends Migration
             $table->string('nis', 60)->unique();
             $table->string('nisn', 60)->nullable()->unique();
             $table->string('name', 60);
-            $table->string('pob', 60)->nullable();
-            $table->date('dob')->nullable();
+            $table->string('pob', 60);
+            $table->date('dob');
             $table->boolean('gender_id');
             $table->unsignedTinyInteger('religion_id');
             $table->string('phone', 14)->nullable();
