@@ -206,8 +206,13 @@ class ManageStudentTest extends TestCase
     public function user_can_delete_a_student()
     {
         $this->loginAsAdmin();
-        $student = factory(Student::class)->create();
+
         factory(Student::class)->create();
+        $student = factory(Student::class)->create([
+            'name' => 'Testing 123',
+        ]);
+        $user = factory(User::class)->create();
+        $student->update(['login_id' => $user->id]);
 
         $this->visitRoute('students.edit', $student);
         $this->click('del-student-'.$student->id);
@@ -217,6 +222,10 @@ class ManageStudentTest extends TestCase
 
         $this->dontSeeInDatabase('students', [
             'id' => $student->id,
+        ]);
+
+        $this->dontSeeInDatabase('users', [
+            'id' => $student->login_id,
         ]);
     }
 }

@@ -89,6 +89,8 @@ class StudentController extends Controller
 
         DB::commit();
 
+        flash(__('student.created'), 'success');
+
         return redirect()->route('students.show', $student);
     }
 
@@ -163,6 +165,8 @@ class StudentController extends Controller
 
         DB::commit();
 
+        flash(__('student.updated'), 'information');
+
         return redirect()->route('students.show', $student);
     }
 
@@ -179,7 +183,17 @@ class StudentController extends Controller
 
         $request->validate(['student_id' => 'required']);
 
-        if ($request->get('student_id') == $student->id && $student->delete()) {
+        if ($request->get('student_id') == $student->id) {
+
+            DB::beginTransaction();
+
+            $student->delete();
+            $student->login->delete();
+
+            DB::commit();
+
+            flash(__('student.deleted'), 'error');
+
             return redirect()->route('students.index');
         }
 
